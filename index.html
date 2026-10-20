@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
+<script>try{if('scrollRestoration' in history)history.scrollRestoration='manual'}catch(e){}if(location.hash)try{history.replaceState(null,'',location.pathname+location.search)}catch(e){}document.documentElement.style.scrollBehavior='auto';addEventListener('DOMContentLoaded',function(){scrollTo(0,0)});addEventListener('pageshow',function(){scrollTo(0,0)});</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#003020">
 <title>Zacapa Floral — Diseño y Producción de Eventos | Sonsonate & San Salvador</title>
@@ -54,7 +55,8 @@
   --sans:'Montserrat',Arial,sans-serif;
 }
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;overflow-anchor:none}
+body{overflow-anchor:none}
 body{background:var(--verde);color:var(--champ);font-family:var(--sans);font-weight:300;line-height:1.7;overflow-x:hidden}
 ::selection{background:var(--oro);color:var(--noche)}
 img{max-width:100%;display:block}
@@ -863,12 +865,12 @@ const otroTipo=document.getElementById('otroTipo'),otroColor=document.getElement
 function marcar(grupo,btn,cls){document.querySelectorAll('#'+grupo+' .'+cls).forEach(c=>c.classList.remove('sel'));btn.classList.add('sel')}
 document.querySelectorAll('#chipsTipo .chip').forEach(c=>c.addEventListener('click',()=>{
   sel.tipo=c.textContent;marcar('chipsTipo',c,'chip');
-  otroTipo.hidden=c.textContent!=='Otro';if(c.textContent==='Otro')otroTipo.focus();actualizarConf();
+  otroTipo.hidden=c.textContent!=='Otro';if(c.textContent==='Otro')try{otroTipo.focus({preventScroll:true})}catch(e){otroTipo.focus()}actualizarConf();
 }));
 document.querySelectorAll('#chipsEstilo .chip').forEach(c=>c.addEventListener('click',()=>{sel.estilo=c.textContent;marcar('chipsEstilo',c,'chip');actualizarConf()}));
 document.querySelectorAll('#chipsColor .muestra').forEach(c=>c.addEventListener('click',()=>{
   sel.color=c.dataset.color;marcar('chipsColor',c,'muestra');
-  otroColor.hidden=c.dataset.color!=='Otro';if(c.dataset.color==='Otro')otroColor.focus();actualizarConf();
+  otroColor.hidden=c.dataset.color!=='Otro';if(c.dataset.color==='Otro')try{otroColor.focus({preventScroll:true})}catch(e){otroColor.focus()}actualizarConf();
 }));
 otroTipo.addEventListener('input',actualizarConf);
 otroColor.addEventListener('input',actualizarConf);
@@ -883,6 +885,30 @@ function actualizarConf(){
     b.style.opacity=1;b.style.pointerEvents='auto';
   }
 }
+/* ===== FIX: siempre iniciar arriba (móvil y escritorio) ===== */
+(function(){
+  function irArriba(){ try{ window.scrollTo({top:0,left:0,behavior:'instant'}); }catch(e){ window.scrollTo(0,0); } document.documentElement.scrollTop=0; document.body.scrollTop=0; }
+  try{ if('scrollRestoration' in history) history.scrollRestoration='manual'; }catch(e){}
+  if(location.hash) try{ history.replaceState(null,'',location.pathname+location.search); }catch(e){}
+  // Capa anti-restauración: forzar arriba inmediatamente y en varios momentos clave
+  irArriba();
+  addEventListener('DOMContentLoaded', irArriba);
+  addEventListener('pageshow', function(e){ irArriba(); setTimeout(irArriba,0); });
+  addEventListener('load', function(){
+    irArriba();
+    setTimeout(irArriba,0);
+    setTimeout(irArriba,150);
+    setTimeout(irArriba,500);
+    // Restaurar scroll suave después de asegurar posición inicial
+    setTimeout(function(){ document.documentElement.style.scrollBehavior='smooth'; },600);
+  });
+  addEventListener('beforeunload', irArriba);
+  // Si el navegador intenta anclar scroll por carga de imágenes, cancelar
+  if('onscrollend' in window) { /* moderno */ }
+  // Fallback extra para bfcache y recargas rápidas
+  setTimeout(irArriba,0);
+  setTimeout(irArriba,50);
+})();
 </script>
 </body>
 </html>
