@@ -4,7 +4,7 @@
 
 Sitio web one-page de Zacapa Floral: alta floristería y diseño floral para eventos,
 desde Nahuizalco, Sonsonate, El Salvador. El objetivo del sitio es convertir visitas en
-cotizaciones por **WhatsApp Business (+503 6292-118)**.
+cotizaciones por **WhatsApp Business (+503 6292 2118)**.
 
 Contacto: zacapafloral@gmail.com · TikTok/Facebook/Instagram: @zacapafloral
 
