@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#003020">
+<title>Zacapa Floral — Diseño y Producción de Eventos | Sonsonate & San Salvador</title>
+<meta name="description" content="Zacapa Floral: decoración floral y producción integral de eventos en Sonsonate y San Salvador. Bodas, XV años, eventos corporativos y religiosos. Cotiza por WhatsApp.">
+<link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<!-- Actualizar dominio cuando el sitio esté publicado en Vercel -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Zacapa Floral — No decoramos espacios; transformamos emociones en recuerdos">
+<meta property="og:description" content="Diseño floral y producción integral de eventos en Sonsonate y San Salvador. Cotiza tu evento por WhatsApp.">
+<meta property="og:image" content="img/og-cover.jpg">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Zacapa Floral",
+  "slogan": "No decoramos espacios; transformamos emociones en recuerdos",
+  "description": "Diseño, decoración y producción integral de eventos: arreglos florales, ambientación de espacios y alquiler de mobiliario.",
+  "telephone": "+50362921118",
+  "email": "zacapafloral@gmail.com",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Nahuizalco",
+    "addressRegion": "Sonsonate",
+    "addressCountry": "SV"
+  },
+  "areaServed": ["Sonsonate", "San Salvador"],
+  "priceRange": "$$"
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Great+Vibes&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600;1,700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --verde:#003020;
+  --noche:#001A0B;
+  --noche2:#02422c;
+  --oro:#D6A342;
+  --champ:#F4D494;
+  --bronce:#A7781A;
+  --carmesi:#CA0327;
+  --humo:rgba(244,212,148,.72);
+  --linea:rgba(214,163,66,.28);
+  --serif:'Cinzel',Georgia,serif;
+  --script:'Great Vibes','Brush Script MT',cursive;
+  --sans:'Montserrat',Arial,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--verde);color:var(--champ);font-family:var(--sans);font-weight:300;line-height:1.7;overflow-x:hidden}
+::selection{background:var(--oro);color:var(--noche)}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:var(--serif);font-weight:600;letter-spacing:.14em;text-transform:uppercase}
+.script{font-family:var(--script);text-transform:none;letter-spacing:0;font-weight:400}
+
+/* ---------- utilidades ---------- */
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+section{position:relative;padding:100px 0}
+.kicker{font-size:.72rem;letter-spacing:.5em;text-transform:uppercase;color:var(--oro);margin-bottom:18px;display:flex;align-items:center;justify-content:center;gap:14px}
+.kicker::before,.kicker::after{content:"";width:44px;height:1px;background:linear-gradient(90deg,transparent,var(--oro));}
+.kicker::after{background:linear-gradient(90deg,var(--oro),transparent)}
+.titulo-seccion{font-size:clamp(1.5rem,3.4vw,2.4rem);text-align:center;color:#fff;margin-bottom:16px}
+.sub-seccion{text-align:center;color:var(--humo);max-width:640px;margin:0 auto 56px;font-size:.95rem}
+.centro{text-align:center}
+
+/* ---------- revelado ---------- */
+.reveal{opacity:0;transform:translateY(38px);transition:opacity .9s ease,transform .9s ease}
+.reveal.visible{opacity:1;transform:none}
+
+/* ---------- navegación ---------- */
+header{position:fixed;top:0;left:0;right:0;z-index:100;transition:.4s;padding:14px 0}
+header.solido{background:rgba(0,26,11,.92);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid var(--linea);padding:8px 0}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logo-nav{height:52px;width:auto;mix-blend-mode:screen}
+.nav-links{display:flex;gap:30px;list-style:none;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase}
+.nav-links a{position:relative;padding:6px 0;transition:.3s}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--oro);transition:.35s}
+.nav-links a:hover{color:var(--oro)}
+.nav-links a:hover::after{width:100%}
+.btn-oro{display:inline-block;background:var(--oro);color:var(--noche);font-family:var(--sans);font-weight:600;font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;padding:15px 34px;border-radius:2px;transition:.35s;border:1px solid var(--oro)}
+.btn-oro:hover{background:transparent;color:var(--oro);box-shadow:0 0 24px rgba(214,163,66,.35)}
+.btn-linea{display:inline-block;background:transparent;color:var(--champ);font-weight:500;font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;padding:15px 34px;border:1px solid var(--bronce);border-radius:2px;transition:.35s}
+.btn-linea:hover{border-color:var(--oro);color:var(--oro)}
+.hamb{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px;padding:8px}
+.hamb span{display:block;width:26px;height:2px;background:var(--oro);transition:.3s}
+
+/* ---------- héroe ---------- */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:120px 20px 60px;
+background:radial-gradient(1100px 600px at 50% 18%,rgba(214,163,66,.10),transparent 60%),radial-gradient(900px 500px at 50% 110%,rgba(202,3,39,.05),transparent 60%),linear-gradient(180deg,var(--noche) 0%,var(--verde) 78%)}
+.hero-logo{width:min(320px,62vw);mix-blend-mode:screen;filter:brightness(1.06) saturate(1.1) drop-shadow(0 18px 60px rgba(0,0,0,.55));animation:aparecer 1.4s ease both}
+.hero-eslogan{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:600;font-size:clamp(1.7rem,4.6vw,3.1rem);color:var(--champ);margin:30px 0 14px;animation:aparecer 1.4s .35s ease both;line-height:1.35;letter-spacing:.01em;text-transform:none;text-wrap:balance}
+.hero-eslogan em{color:var(--oro);font-style:italic}
+.hero-sub{max-width:650px;color:var(--humo);font-size:.95rem;letter-spacing:.05em;animation:aparecer 1.4s .6s ease both}
+.hero-ctas{display:flex;gap:18px;flex-wrap:wrap;justify-content:center;margin-top:38px;animation:aparecer 1.4s .85s ease both}
+.scroll-hint{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);color:var(--oro);font-size:.65rem;letter-spacing:.4em;text-transform:uppercase;opacity:.8;animation:hint 2.4s infinite}
+@keyframes aparecer{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+@keyframes hint{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,10px)}}
+
+/* pétalos reales de rosa en dorado */
+.petal{position:absolute;top:-8vh;pointer-events:none;mix-blend-mode:screen;opacity:0;animation:caer linear infinite;filter:drop-shadow(0 4px 8px rgba(0,0,0,.35))}
+@keyframes caer{0%{transform:translate(0,-6vh) rotate(0deg);opacity:0}8%{opacity:.65}90%{opacity:.5}100%{transform:translate(-14vw,112vh) rotate(560deg);opacity:0}}
+
+/* ---------- cinta de fotos ---------- */
+.cinta{padding:0;border-top:1px solid var(--linea);border-bottom:1px solid var(--linea);background:var(--noche);overflow:hidden}
+.cinta-track{display:flex;gap:14px;width:max-content;animation:deslizar 46s linear infinite;padding:14px}
+.cinta img{height:190px;width:auto;border-radius:6px;border:1px solid var(--linea);object-fit:cover;filter:saturate(1.02)}
+.cinta:hover .cinta-track{animation-play-state:paused}
+@keyframes deslizar{to{transform:translateX(-50%)}}
+
+/* ---------- manifiesto ---------- */
+.manifiesto{background:radial-gradient(700px 320px at 50% 40%,rgba(214,163,66,.07),transparent 65%),var(--verde)}
+.mani-texto{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:600;font-size:clamp(1.7rem,4.6vw,3.2rem);line-height:1.4;color:var(--champ);letter-spacing:.01em;text-transform:none;max-width:900px;margin:0 auto;text-wrap:balance}
+.mani-texto em{color:var(--oro)}
+.mani-rosa{color:var(--carmesi);font-size:1.4rem;display:inline-block;margin-top:22px}
+
+/* ---------- antes / después ---------- */
+.ba-frame{max-width:960px;margin:0 auto;border:1px solid var(--bronce);border-radius:10px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+.ba{position:relative;aspect-ratio:16/10;user-select:none;-webkit-user-select:none;touch-action:pan-y;cursor:ew-resize}
+.ba img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none}
+.ba .despues{clip-path:inset(0 0 0 var(--pos,50%))}
+.ba-handle{position:absolute;top:0;bottom:0;left:var(--pos,50%);width:2px;background:var(--oro);transform:translateX(-1px);box-shadow:0 0 18px rgba(214,163,66,.8)}
+.ba-handle::after{content:"⟺";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:52px;height:52px;line-height:52px;text-align:center;background:var(--oro);color:var(--noche);border-radius:50%;font-size:1.25rem;box-shadow:0 6px 22px rgba(0,0,0,.5)}
+.ba-tag{position:absolute;top:16px;font-size:.62rem;letter-spacing:.34em;text-transform:uppercase;background:rgba(0,26,11,.72);color:var(--champ);padding:7px 16px;border:1px solid var(--linea);border-radius:30px}
+.ba-tag.antes{left:16px}.ba-tag.desp{right:16px;color:var(--oro)}
+.ba-nota{text-align:center;color:var(--humo);font-size:.78rem;margin-top:16px;font-style:italic}
+
+/* ---------- galería ---------- */
+.galeria{background:linear-gradient(180deg,var(--noche) 0%,var(--verde) 100%)}
+.tabs{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-bottom:44px}
+.tab{background:none;border:1px solid var(--bronce);color:var(--champ);font-family:var(--sans);font-size:.7rem;letter-spacing:.24em;text-transform:uppercase;padding:12px 26px;border-radius:30px;cursor:pointer;transition:.3s}
+.tab:hover{border-color:var(--oro);color:var(--oro)}
+.tab.activo{background:var(--oro);color:var(--noche);border-color:var(--oro);font-weight:600}
+.grid-fotos{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px}
+.foto{position:relative;overflow:hidden;border-radius:8px;border:1px solid var(--linea);cursor:zoom-in;aspect-ratio:4/5;background:var(--noche)}
+.foto.h{width:100%}
+.foto img{width:100%;height:100%;object-fit:cover;transition:transform 1s cubic-bezier(.2,.8,.2,1),filter .5s}
+.foto:hover img{transform:scale(1.07);filter:brightness(1.05)}
+.foto figcaption{position:absolute;left:0;right:0;bottom:0;padding:38px 18px 14px;background:linear-gradient(transparent,rgba(0,26,11,.9));font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--champ);opacity:0;transform:translateY(12px);transition:.45s}
+.foto:hover figcaption{opacity:1;transform:none}
+.foto figcaption b{display:block;color:var(--oro);font-family:var(--serif);font-size:.8rem}
+.foto.oculta{display:none}
+.lightbox{position:fixed;inset:0;background:rgba(0,26,11,.94);z-index:200;display:none;align-items:center;justify-content:center;padding:30px;backdrop-filter:blur(6px)}
+.lightbox.abierto{display:flex}
+.lightbox img{max-width:min(92vw,920px);max-height:86vh;border:1px solid var(--bronce);border-radius:8px;box-shadow:0 40px 120px rgba(0,0,0,.7)}
+.lightbox .cerrar{position:absolute;top:22px;right:30px;background:none;border:none;color:var(--oro);font-size:2.2rem;cursor:pointer;line-height:1}
+.lightbox .pie{position:absolute;bottom:26px;left:0;right:0;text-align:center;font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--oro)}
+
+/* ---------- paquetes ---------- */
+.paq-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:26px;align-items:stretch}
+.paq{background:linear-gradient(170deg,rgba(214,163,66,.07),rgba(0,26,11,.35));border:1px solid var(--linea);border-radius:12px;padding:44px 34px;text-align:center;display:flex;flex-direction:column;transition:.4s;position:relative;overflow:hidden}
+.paq::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--oro),transparent);opacity:0;transition:.4s}
+.paq:hover{transform:translateY(-10px);border-color:var(--bronce);box-shadow:0 30px 60px rgba(0,0,0,.45)}
+.paq:hover::before{opacity:1}
+.paq.estrella{border-color:var(--oro);background:linear-gradient(170deg,rgba(214,163,66,.13),rgba(0,26,11,.4))}
+.paq-num{font-family:var(--script);font-size:2rem;color:var(--bronce)}
+.paq h3{font-size:1.15rem;color:#fff;margin:6px 0 4px}
+.paq-papel{font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:var(--oro);margin-bottom:20px;text-shadow:0 2px 10px rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center;gap:14px}
+.paq-papel::before,.paq-papel::after{content:"";width:44px;height:1px;background:linear-gradient(90deg,transparent,var(--oro))}
+.paq-papel::after{background:linear-gradient(90deg,var(--oro),transparent)}
+.paq ul{list-style:none;text-align:left;font-size:.86rem;color:var(--humo);margin:0 0 30px;flex:1}
+.paq li{padding:9px 0 9px 26px;border-bottom:1px solid rgba(214,163,66,.12);position:relative}
+.paq li::before{content:"❀";position:absolute;left:0;color:var(--oro);font-size:.8rem}
+.paq .btn-linea,.paq .btn-oro{margin-top:auto}
+.paq-prox{border-style:dashed;opacity:.92}
+.paq-prox-txt{font-size:.88rem;color:var(--humo);flex:1;margin-bottom:28px}
+
+/* ---------- videos ---------- */
+.videos{background:var(--noche)}
+.vid-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+.vid{aspect-ratio:9/15;border:1px solid var(--linea);border-radius:12px;background:linear-gradient(165deg,rgba(2,66,44,.5),var(--noche));display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;text-align:center;padding:22px;transition:.35s;position:relative;overflow:hidden}
+.vid:hover{border-color:var(--oro);transform:translateY(-6px)}
+.vid-play{width:64px;height:64px;border-radius:50%;border:1.5px solid var(--oro);display:flex;align-items:center;justify-content:center;color:var(--oro);transition:.35s}
+.vid:hover .vid-play{background:var(--oro);color:var(--noche);box-shadow:0 0 30px rgba(214,163,66,.5)}
+.vid h4{font-family:var(--serif);letter-spacing:.14em;font-size:.85rem;color:#fff;text-transform:uppercase}
+.vid p{font-size:.76rem;color:var(--humo)}
+.vid .badge{position:absolute;top:14px;font-size:.58rem;letter-spacing:.3em;text-transform:uppercase;color:var(--oro);border:1px solid var(--bronce);padding:5px 12px;border-radius:20px}
+
+/* ---------- proceso ---------- */
+.pasos{max-width:860px;margin:0 auto;position:relative}
+.pasos::before{content:"";position:absolute;left:29px;top:20px;bottom:20px;width:1px;background:linear-gradient(var(--oro),rgba(214,163,66,.1))}
+.paso{display:flex;gap:30px;padding:30px 0;align-items:flex-start;position:relative}
+.paso-num{flex:0 0 58px;height:58px;border-radius:50%;border:1px solid var(--oro);background:var(--verde);display:flex;align-items:center;justify-content:center;font-family:var(--serif);color:var(--oro);font-size:1.2rem;z-index:1}
+.paso h3{font-size:1rem;color:#fff;margin-bottom:6px;letter-spacing:.18em}
+.paso p{font-size:.88rem;color:var(--humo);max-width:600px}
+
+/* ---------- nosotros / mvv ---------- */
+.nosotros{background:linear-gradient(180deg,var(--verde),var(--noche))}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;margin-bottom:80px}
+.duo h2{font-size:1.5rem;color:#fff;margin-bottom:18px;text-align:left}
+.duo p{font-size:.92rem;color:var(--humo)}
+.duo .firma{font-family:var(--script);color:var(--oro);font-size:1.9rem;margin-top:20px}
+.duo-foto{border:1px solid var(--bronce);border-radius:12px;overflow:hidden;box-shadow:0 30px 70px rgba(0,0,0,.5);transform:rotate(1.5deg)}
+.mvv{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px;margin-bottom:60px}
+.mvv-card{border:1px solid var(--linea);border-radius:12px;padding:36px 32px;background:rgba(0,26,11,.4)}
+.mvv-card h3{color:var(--oro);font-size:1rem;margin-bottom:12px}
+.mvv-card p{font-size:.87rem;color:var(--humo)}
+.valores{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px}
+.valor{border:1px solid var(--linea);border-radius:10px;padding:24px 14px;text-align:center;transition:.3s}
+.valor:hover{border-color:var(--oro);transform:translateY(-4px)}
+.valor svg{width:30px;height:30px;stroke:var(--oro);fill:none;stroke-width:1.5;margin-bottom:10px}
+.valor b{display:block;font-family:var(--serif);letter-spacing:.16em;font-size:.74rem;color:#fff;text-transform:uppercase;margin-bottom:6px}
+.valor span{font-size:.7rem;color:var(--humo)}
+
+/* ---------- ambiente ---------- */
+.ambiente{background:var(--noche)}
+.amb-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+.amb{border-left:2px solid var(--oro);padding:22px 24px;background:linear-gradient(90deg,rgba(214,163,66,.06),transparent)}
+.amb b{display:block;font-family:var(--serif);letter-spacing:.2em;font-size:.78rem;color:var(--oro);text-transform:uppercase;margin-bottom:8px}
+.amb span{font-size:.82rem;color:var(--humo)}
+
+/* ---------- testimonios ---------- */
+.testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+.testi{border:1px solid var(--linea);border-radius:12px;padding:40px 32px;background:rgba(0,26,11,.4);position:relative}
+.testi::before{content:"“";position:absolute;top:6px;left:20px;font-family:var(--script);font-size:5rem;color:rgba(214,163,66,.25)}
+.testi p{font-size:.92rem;color:var(--champ);font-style:italic;margin-bottom:22px;position:relative;z-index:1}
+.testi .estrellas{color:var(--oro);letter-spacing:6px;font-size:.8rem;margin-bottom:14px}
+.testi b{font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;color:var(--humo)}
+.testi.destacada{border-color:var(--bronce)}
+.testi.destacada::after{content:"Historia real ♥";position:absolute;top:-12px;right:22px;background:var(--carmesi);color:#fff;font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;padding:5px 14px;border-radius:20px}
+
+/* ---------- configurador ---------- */
+.config{background:radial-gradient(800px 400px at 50% 0%,rgba(214,163,66,.08),transparent 60%),var(--noche)}
+.conf-box{max-width:880px;margin:0 auto;border:1px solid var(--bronce);border-radius:16px;padding:54px 44px;background:rgba(0,26,11,.55);box-shadow:0 40px 100px rgba(0,0,0,.5)}
+.conf-paso{margin-bottom:38px}
+.conf-paso h3{font-size:.85rem;color:var(--oro);margin-bottom:18px;display:flex;align-items:center;gap:14px}
+.conf-paso h3 .n{width:30px;height:30px;border-radius:50%;border:1px solid var(--oro);display:inline-flex;align-items:center;justify-content:center;font-size:.78rem;flex:0 0 auto}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{background:none;border:1px solid var(--linea);color:var(--champ);font-family:var(--sans);font-size:.74rem;letter-spacing:.14em;padding:11px 22px;border-radius:30px;cursor:pointer;transition:.28s}
+.chip:hover{border-color:var(--oro)}
+.chip.sel{background:var(--oro);color:var(--noche);border-color:var(--oro);font-weight:600}
+.muestras{display:flex;flex-wrap:wrap;gap:14px}
+.muestra{display:flex;align-items:center;gap:9px;background:none;border:1px solid var(--linea);border-radius:30px;padding:9px 16px;color:var(--champ);font-size:.72rem;letter-spacing:.1em;cursor:pointer;transition:.28s}
+.muestra:hover{border-color:var(--oro)}
+.muestra.sel{border-color:var(--oro);background:rgba(214,163,66,.12)}
+.puntos{display:flex;gap:5px}
+.puntos i{width:14px;height:14px;border-radius:50%;border:1px solid rgba(255,255,255,.25)}
+.conf-resumen{border:1px dashed var(--bronce);border-radius:12px;padding:26px 30px;text-align:center;background:rgba(214,163,66,.05)}
+.conf-resumen p{font-size:.9rem;color:var(--champ);margin-bottom:4px}
+.conf-resumen .ver{color:var(--oro);font-family:var(--serif);letter-spacing:.1em}
+.conf-resumen small{color:var(--humo);display:block;margin-bottom:20px;font-size:.72rem}
+.conf-input{width:100%;margin-top:14px;background:rgba(0,26,11,.5);border:1px solid var(--bronce);border-radius:8px;color:var(--champ);font-family:var(--sans);font-size:.86rem;padding:13px 18px;outline:none;transition:.3s}
+.conf-input:focus{border-color:var(--oro);box-shadow:0 0 16px rgba(214,163,66,.2)}
+.conf-input::placeholder{color:rgba(244,212,148,.4)}
+
+/* ---------- contacto ---------- */
+.contacto{background:linear-gradient(180deg,var(--verde),var(--noche))}
+.cont-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+.cont-item{display:flex;gap:18px;padding:20px 0;border-bottom:1px solid rgba(214,163,66,.14);align-items:center}
+.cont-item svg{width:26px;height:26px;stroke:var(--oro);fill:none;stroke-width:1.6;flex:0 0 auto}
+.cont-item b{display:block;font-size:.66rem;letter-spacing:.3em;text-transform:uppercase;color:var(--oro);margin-bottom:3px}
+.cont-item span{font-size:.92rem;color:var(--champ)}
+.redes{display:flex;gap:14px;margin-top:34px;flex-wrap:wrap}
+.red{width:56px;height:56px;border:1px solid var(--linea);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:.3s}
+.red:hover{border-color:var(--oro);transform:translateY(-4px);box-shadow:0 10px 26px rgba(0,0,0,.4)}
+.red svg{width:24px;height:24px;stroke:var(--champ);fill:none;stroke-width:1.6}
+.red:hover svg{stroke:var(--oro)}
+
+/* ---------- footer / fab ---------- */
+footer{background:var(--noche);border-top:1px solid var(--linea);padding:44px 0;text-align:center}
+footer img{height:44px;margin:0 auto 16px;mix-blend-mode:screen;opacity:.9}
+footer p{font-size:.66rem;letter-spacing:.26em;text-transform:uppercase;color:var(--humo)}
+footer .script{font-family:var(--script);color:var(--oro);font-size:1.3rem;letter-spacing:0;text-transform:none;display:block;margin-top:8px}
+.fab{position:fixed;right:26px;bottom:26px;z-index:150;width:64px;height:64px;border-radius:50%;background:var(--oro);color:var(--noche);display:flex;align-items:center;justify-content:center;box-shadow:0 12px 34px rgba(0,0,0,.5);transition:.3s;animation:pulso 2.6s infinite}
+.fab:hover{transform:scale(1.1)}
+.fab svg{width:30px;height:30px;fill:var(--noche)}
+@keyframes pulso{0%,100%{box-shadow:0 12px 34px rgba(0,0,0,.5),0 0 0 0 rgba(214,163,66,.45)}55%{box-shadow:0 12px 34px rgba(0,0,0,.5),0 0 0 20px rgba(214,163,66,0)}}
+
+/* ---------- picture wrappers (webp + fallback) ---------- */
+.ba picture{position:static}
+.cinta picture{flex:0 0 auto;height:190px}
+.foto picture,.duo-foto picture{display:block;width:100%;height:100%}
+
+/* ---------- tablets (769–1100px) ---------- */
+@media(min-width:769px) and (max-width:1100px){
+  .paq-grid{grid-template-columns:repeat(2,1fr)}
+  .grid-fotos{grid-template-columns:repeat(2,1fr)}
+  .vid-grid{grid-template-columns:repeat(3,1fr)}
+  .nav-links{gap:16px;font-size:.64rem}
+  .cinta img,.cinta picture{height:150px}
+  .duo{gap:36px}
+  .hero-logo{width:min(280px,50vw)}
+}
+
+/* ---------- dispositivos táctiles (sin hover) ---------- */
+@media(hover:none){
+  .foto figcaption{opacity:1;transform:none;padding:30px 14px 10px}
+  .paq:hover,.vid:hover,.valor:hover{transform:none}
+  .cinta-track{animation-duration:30s}
+  .fab{animation:none}
+}
+
+/* ---------- responsive ---------- */
+@media(max-width:900px){
+  .duo,.cont-grid{grid-template-columns:1fr;gap:34px}
+  .duo-foto{max-width:420px;margin:0 auto}
+}
+@media(max-width:768px){
+  section{padding:70px 0}
+  .nav-links{position:fixed;top:0;right:0;height:100vh;width:min(300px,80vw);background:var(--noche);flex-direction:column;padding:100px 40px;gap:26px;transform:translateX(100%);transition:.4s;border-left:1px solid var(--linea);font-size:.85rem}
+  .nav-links.abierto{transform:none}
+  .hamb{display:flex;z-index:110}
+  .hamb.x span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .hamb.x span:nth-child(2){opacity:0}
+  .hamb.x span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+  .nav .btn-oro{display:none}
+  .conf-box{padding:38px 24px}
+  .pasos::before{left:24px}
+  .paso{gap:20px}
+  .paso-num{flex-basis:48px;height:48px}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ NAVEGACIÓN ============ -->
+<header id="header">
+  <div class="wrap nav">
+    <a href="#inicio"><img src="img/logo-horizontal.jpg" alt="Zacapa Floral" class="logo-nav"></a>
+    <ul class="nav-links" id="menu">
+      <li><a href="#transformacion">Transformación</a></li>
+      <li><a href="#galeria">Galería</a></li>
+      <li><a href="#paquetes">Paquetes</a></li>
+      <li><a href="#proceso">Proceso</a></li>
+      <li><a href="#nosotros">Nosotros</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <a class="btn-oro" href="https://wa.me/50362921118?text=Hola%20Zacapa%20Floral%2C%20quiero%20cotizar%20la%20decoraci%C3%B3n%20de%20mi%20evento." target="_blank" rel="noopener">Cotizar evento</a>
+    <button class="hamb" id="hamb" aria-label="Menú"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- ============ HÉROE ============ -->
+<div class="hero" id="inicio">
+  <div id="petalos" aria-hidden="true"></div>
+  <img src="img/logo-principal.jpg" alt="Logo Zacapa Floral" class="hero-logo">
+  <h1 class="hero-eslogan">No decoramos espacios;<br><em>transformamos emociones en recuerdos</em></h1>
+  <p class="hero-sub">Alta floristería y diseño floral para bodas, XV años, celebraciones familiares, eventos corporativos y religiosos. Creamos ambientaciones y experiencias personalizadas que hacen de cada ocasión un momento extraordinario.</p>
+  <div class="hero-ctas">
+    <a class="btn-oro" href="https://wa.me/50362921118?text=Hola%20Zacapa%20Floral%2C%20quiero%20cotizar%20la%20decoraci%C3%B3n%20de%20mi%20evento." target="_blank" rel="noopener">Cotiza tu evento por WhatsApp</a>
+    <a class="btn-linea" href="#transformacion">Ver la transformación</a>
+  </div>
+  <div class="scroll-hint">Desliza</div>
+</div>
+
+<!-- ============ CINTA DE TRABAJOS ============ -->
+<div class="cinta" aria-hidden="true">
+  <div class="cinta-track" id="cinta"></div>
+</div>
+
+<!-- ============ MANIFIESTO ============ -->
+<section class="manifiesto centro">
+  <div class="wrap">
+    <h2 class="mani-texto reveal">No decoramos espacios;<br><em>transformamos emociones en recuerdos</em>
+    <span class="mani-rosa">✦</span></h2>
+  </div>
+</section>
+
+<!-- ============ ANTES / DESPUÉS ============ -->
+<section id="transformacion">
+  <div class="wrap">
+    <p class="kicker reveal">La transformación</p>
+    <h2 class="titulo-seccion reveal">Arrastra y mira lo que hacemos</h2>
+    <p class="sub-seccion reveal">Así convertimos un salón común en el espacio que tú imaginaste. Desliza el divisor dorado.</p>
+    <div class="ba-frame reveal">
+      <div class="ba" id="ba" style="--pos:50%">
+        <picture><source srcset="img/antes.webp" type="image/webp"><img src="img/antes.jpg" alt="Espacio antes de la decoración de Zacapa Floral"></picture>
+        <picture><source srcset="img/despues.webp" type="image/webp"><img src="img/despues.jpg" alt="Espacio después de la decoración de Zacapa Floral" class="despues"></picture>
+        <span class="ba-tag antes">Antes</span>
+        <span class="ba-tag desp">Después · Zacapa Floral</span>
+        <div class="ba-handle"></div>
+      </div>
+    </div>
+    <p class="ba-nota reveal">Fotografías reales de uno de nuestros trabajos: así quedó el espacio tras la ambientación de Zacapa Floral.</p>
+  </div>
+</section>
+
+<!-- ============ GALERÍA ============ -->
+<section class="galeria" id="galeria">
+  <div class="wrap">
+    <p class="kicker reveal">Nuestro trabajo</p>
+    <h2 class="titulo-seccion reveal">Galería de creaciones propias</h2>
+    <p class="sub-seccion reveal">Cada fotografía es un trabajo real de Zacapa Floral, organizado por categorías.</p>
+    <div class="tabs reveal" id="tabsGaleria">
+      <!-- Las categorías se generan automáticamente según las fotos disponibles -->
+    </div>
+    <div class="grid-fotos reveal" id="grid"></div>
+  </div>
+</section>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-label="Vista ampliada">
+  <button class="cerrar" id="lbCerrar" aria-label="Cerrar">×</button>
+  <img id="lbImg" src="" alt="">
+  <p class="pie" id="lbPie"></p>
+</div>
+
+<!-- ============ PAQUETES ============ -->
+<section id="paquetes">
+  <div class="wrap">
+    <p class="kicker reveal">Nuestros servicios</p>
+    <h2 class="titulo-seccion reveal">Elige cómo quieres vivir tu evento</h2>
+    <p class="sub-seccion reveal">Tres paquetes pensados para distintos momentos. Cada uno se personaliza según tu espacio, tu estilo y tu presupuesto — cotízalo sin compromiso.</p>
+    <div class="paq-grid">
+      <div class="paq reveal">
+        <span class="paq-num">I.</span>
+        <h3>Esencia Floral</h3>
+        <p class="paq-papel">Lo esencial, con alma</p>
+        <ul>
+          <li>Arreglo floral principal personalizado</li>
+          <li>Decoración del punto focal del evento</li>
+          <li>Detalles en globos y telas base</li>
+          <li>Montaje y desmontaje incluidos</li>
+          <li>Ideal para cumpleaños y celebraciones íntimas</li>
+        </ul>
+        <a class="btn-linea" href="https://wa.me/50362921118?text=Hola%20Zacapa%20Floral%2C%20quiero%20cotizar%20el%20paquete%20Esencia%20Floral." target="_blank" rel="noopener">Cotizar Esencia</a>
+      </div>
+      <div class="paq estrella reveal">
+        <span class="paq-num">II.</span>
+        <h3>Armonía Floral</h3>
+        <p class="paq-papel">El favorito · Coordinación completa</p>
+        <ul>
+          <li>Ambientación integral del salón</li>
+          <li>Centros de mesa y arreglos coordinados</li>
+          <li>Telas, drapeados y elementos decorativos</li>
+          <li>Coordinación directa antes y durante el evento</li>
+          <li>Ideal para XV años, bodas y graduaciones</li>
+        </ul>
+        <a class="btn-oro" href="https://wa.me/50362921118?text=Hola%20Zacapa%20Floral%2C%20quiero%20cotizar%20el%20paquete%20Armon%C3%ADa%20Floral." target="_blank" rel="noopener">Cotizar Armonía</a>
+      </div>
+      <div class="paq reveal">
+        <span class="paq-num">III.</span>
+        <h3>Legado Floral</h3>
+        <p class="paq-papel">Producción integral premium</p>
+        <ul>
+          <li>Producción y diseño completo del evento</li>
+          <li>Estructuras, arcos florales e iluminación LED</li>
+          <li>Mobiliario, mantelería y ambientación total</li>
+          <li>Equipo de montaje dedicado</li>
+          <li>Ideal para bodas, corporativos y grandes celebraciones</li>
+        </ul>
+        <a class="btn-linea" href="https://wa.me/50362921118?text=Hola%20Zacapa%20Floral%2C%20quiero%20cotizar%20el%20paquete%20Legado%20Floral." target="_blank" rel="noopener">Cotizar Legado</a>
+      </div>
+      <div class="paq paq-prox reveal">
+        <span class="paq-num">✦</span>
+        <h3>Alquiler de Mobiliario</h3>
+        <p class="paq-papel">Próximamente</p>
+        <p class="paq-prox-txt">Muy pronto podrás complementar tu evento con el alquiler de nuestro mobiliario.<br><br>Escríbenos y te avisaremos apenas esté disponible.</p>
+        <a class="btn-linea" href="https://wa.me/50362921118?text=Hola%20Zacapa%20Floral%2C%20av%C3%ADsenme%20cuando%20el%20servicio%20de%20alquiler%20de%20mobiliario%20est%C3%A9%20disponible." target="_blank" rel="noopener">Avísame cuando esté</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VIDEOS / PROCESO EN VIVO ============ -->
+<section class="videos" id="videos">
+  <div class="wrap">
+    <p class="kicker reveal">Detrás de cámaras</p>
+    <h2 class="titulo-seccion reveal">Nuestro proceso en video</h2>
+    <p class="sub-seccion reveal">Aquí podrás ver cómo nace cada decoración: la preparación, el montaje y el momento en que el espacio cobra vida. Contenido que también encuentras en nuestras redes.</p>
+    <div class="vid-grid reveal">
+      <a class="vid" href="https://wa.me/50362921118?text=Hola%2C%20quiero%20ver%20videos%20de%20sus%20montajes." target="_blank" rel="noopener">
+        <span class="badge">Próximamente</span>
+        <span class="vid-play">▶</span>
+        <h4>El montaje, paso a paso</h4>
+        <p>Del salón vacío al evento terminado, en tiempo real.</p>
+      </a>
+      <a class="vid" href="https://wa.me/50362921118?text=Hola%2C%20quiero%20ver%20videos%20de%20sus%20arreglos%20florales." target="_blank" rel="noopener">
+        <span class="badge">Próximamente</span>
+        <span class="vid-play">▶</span>
+        <h4>Así nace un arreglo floral</h4>
+        <p>De la flor cruda al detalle final, pétalo por pétalo.</p>
+      </a>
+      <a class="vid" href="https://wa.me/50362921118?text=Hola%2C%20quiero%20ver%20la%20reacci%C3%B3n%20de%20sus%20clientes%20al%20ver%20la%20decoraci%C3%B3n." target="_blank" rel="noopener">
+        <span class="badge">Próximamente</span>
+        <span class="vid-play">▶</span>
+        <h4>La reacción del cliente</h4>
+        <p>El momento exacto en que el espacio se convierte en emoción.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROCESO ============ -->
+<section id="proceso">
+  <div class="wrap">
+    <p class="kicker reveal">Cómo trabajamos</p>
+    <h2 class="titulo-seccion reveal">De tu idea a la emoción, en 5 pasos</h2>
+    <p class="sub-seccion reveal">Nuestro proceso es el mismo que viviste al bajar por esta página: escucharte, preparar, crear, transformar y entregarte una emoción.</p>
+    <div class="pasos">
+      <div class="paso reveal">
+        <span class="paso-num">1</span>
+        <div><h3>Escuchar la idea</h3><p>Nos reunimos contigo (presencial o por WhatsApp) para conocer lo que imaginas, tus gustos y tus necesidades, y diseñamos la propuesta de colores, flores y elementos.</p></div>
+      </div>
+      <div class="paso reveal">
+        <span class="paso-num">2</span>
+        <div><h3>Comprar con propósito</h3><p>Coordinamos con nuestros proveedores con anticipación para conseguir flores naturales frescas y materiales de calidad, sin desperdicios.</p></div>
+      </div>
+      <div class="paso reveal">
+        <span class="paso-num">3</span>
+        <div><h3>Crear y preparar</h3><p>Preparamos todo con antelación: limpiamos las flores, armamos las bases y pre-montamos telas y elementos decorativos.</p></div>
+      </div>
+      <div class="paso reveal">
+        <span class="paso-num">4</span>
+        <div><h3>Transformar el espacio</h3><p>El día del evento realizamos el montaje final: la flor se convierte en protagonista y el espacio común se vuelve exclusivo y personal.</p></div>
+      </div>
+      <div class="paso reveal">
+        <span class="paso-num">5</span>
+        <div><h3>Entregar una emoción</h3><p>Te presentamos el resultado y nos aseguramos de que supere tus expectativas: que tu idea se convierta en un recuerdo que perdure.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ NOSOTROS / MVV ============ -->
+<section class="nosotros" id="nosotros">
+  <div class="wrap">
+    <div class="duo">
+      <div class="reveal">
+        <p class="kicker" style="justify-content:flex-start">Quiénes somos</p>
+        <h2>El arte de crear lo extraordinario</h2>
+        <p>Zacapa Floral nace de una historia familiar y de una pasión que creció con el tiempo hasta convertirse en una forma de crear.</p>
+        <p style="margin-top:14px">Desde Nahuizalco, Sonsonate, desarrollamos una propuesta que une alta floristería, diseño floral y decoración integral, creando composiciones y ambientes pensados para cada ocasión.</p>
+        <p style="margin-top:14px">No se trata solo de colocar flores. Diseñamos atmósferas, cuidamos cada detalle y transformamos espacios en experiencias que permanecen en la memoria.</p>
+        <p style="margin-top:14px">Trabajamos con flores naturales y artificiales, materiales cuidadosamente seleccionados y producción propia para mantener el control sobre cada etapa: desde la idea inicial hasta el montaje final.</p>
+        <p style="margin-top:14px">En Zacapa Floral, creemos que cada celebración merece tener una identidad propia. Por eso, no seguimos simplemente tendencias: interpretamos las ideas de nuestros clientes y las convertimos en algo extraordinario.</p>
+        <p class="firma">— Marlon Zacapa · Fundador</p>
+      </div>
+      <div class="duo-foto reveal"><picture><source srcset="img/duo-historia.webp" type="image/webp"><img src="img/duo-historia.jpg" alt="Decoración floral de Zacapa Floral" loading="lazy"></picture></div>
+    </div>
+
+    <div class="mvv">
+      <div class="mvv-card reveal">
+        <h3>◈ Misión</h3>
+        <p>Transformamos sentimientos, ideas y sueños en experiencias que se pueden vivir, creando recuerdos memorables a través de la decoración de eventos y alta floristería que hacen que cada momento tenga un significado especial.</p>
+      </div>
+      <div class="mvv-card reveal">
+        <h3>◈ Visión</h3>
+        <p>Ser la empresa decoradora de eventos y alta floristería con mayor proyección y reconocimiento a nivel occidental, distinguidos por nuestra capacidad estratégica para transformar cada celebración en una historia digna de recordar.</p>
+      </div>
+    </div>
+
+    <p class="kicker reveal">Nuestros valores</p>
+    <div class="valores reveal">
+      <div class="valor"><svg viewBox="0 0 24 24"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4z"/></svg><b>Creatividad</b><span>Damos vida a ideas únicas</span></div>
+      <div class="valor"><svg viewBox="0 0 24 24"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/></svg><b>Integridad</b><span>Lo correcto, siempre</span></div>
+      <div class="valor"><svg viewBox="0 0 24 24"><path d="M12 21C7 16.5 2 13 2 8.7 2 5.8 4.2 3.5 7 3.5c2 0 3.8 1 5 2.7 1.2-1.7 3-2.7 5-2.7 2.8 0 5 2.3 5 5.2 0 4.3-5 7.8-10 12.3z"/></svg><b>Pasión</b><span>El corazón en cada creación</span></div>
+      <div class="valor"><svg viewBox="0 0 24 24"><path d="M6 3h12l4 6-10 12L2 9z"/><path d="M2 9h20M9 3l3 6 3-6"/></svg><b>Calidad</b><span>Cada detalle importa</span></div>
+      <div class="valor"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-5M12 21a9 9 0 100-18 9 9 0 000 18z"/></svg><b>Compromiso</b><span>Tu sueño es nuestro</span></div>
+      <div class="valor"><svg viewBox="0 0 24 24"><path d="M12 3c-4 0-7 2.5-7 6 0 2 1 3.8 2.7 4.9L7 19l4-2c.3 0 .7.1 1 .1 4 0 7-2.5 7-6s-3-8.1-7-8.1z"/></svg><b>Empatía</b><span>Escuchamos lo que quieres expresar</span></div>
+      <div class="valor"><svg viewBox="0 0 24 24"><path d="M12 2l3 6.6 7 .8-5.2 4.8L18.2 21 12 17.4 5.8 21l1.4-6.8L2 9.4l7-.8z"/></svg><b>Excelencia</b><span>Superar, no solo cumplir</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COMPROMISO AMBIENTAL ============ -->
+<section class="ambiente" id="ambiente">
+  <div class="wrap">
+    <p class="kicker reveal">Compromiso ambiental</p>
+    <h2 class="titulo-seccion reveal">Belleza que respeta la naturaleza</h2>
+    <p class="sub-seccion reveal">Trabajamos con flores, por eso las cuidamos. Nuestro compromiso está presente en cada etapa del servicio.</p>
+    <div class="amb-grid reveal">
+      <div class="amb"><b>Reutilizamos</b><span>Estructuras, telas y bases de madera y hierro sirven para múltiples eventos, no para un solo uso.</span></div>
+      <div class="amb"><b>Compramos con medida</b><span>Adquirimos flores e insumos según la necesidad real de cada evento, evitando desperdicios.</span></div>
+      <div class="amb"><b>Compostamos</b><span>Los residuos de flores naturales se destinan al compostaje siempre que sea posible.</span></div>
+      <div class="amb"><b>Digitalizamos</b><span>Cotizaciones, propuestas y catálogos viajan en digital, reduciendo el papel impreso.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIOS ============ -->
+<section id="testimonios">
+  <div class="wrap">
+    <p class="kicker reveal">Lo que viven nuestros clientes</p>
+    <h2 class="titulo-seccion reveal">Emociones que hablan por nosotros</h2>
+    <p class="sub-seccion reveal">&nbsp;</p>
+    <div class="testi-grid">
+      <div class="testi destacada reveal">
+        <div class="estrellas">★★★★★</div>
+        <p>En una de nuestras decoraciones, una invitada lloró de emoción al ver lo hermoso que estaba el espacio. Ese momento lo resume todo: no entregamos flores, entregamos recuerdos.</p>
+        <b>— Equipo Zacapa Floral</b>
+      </div>
+      <div class="testi reveal">
+        <div class="estrellas">★★★★★</div>
+        <p>“El altar quedó precioso, tal como lo soñamos. Se nota el cariño en cada detalle. La familia entera quedó encantada.”</p>
+        <b>— Cliente, celebración religiosa</b>
+      </div>
+      <div class="testi reveal">
+        <div class="estrellas">★★★★★</div>
+        <p>“Cada detalle estuvo cuidadosamente pensado. El resultado superó nuestras expectativas y creó un ambiente hermoso e inolvidable.”</p>
+        <b>— Cliente, evento familiar</b>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONFIGURADOR ============ -->
+<section class="config" id="configurador">
+  <div class="wrap">
+    <p class="kicker reveal">Diseña tu evento</p>
+    <h2 class="titulo-seccion reveal">Arma tu cotización en 3 pasos</h2>
+    <p class="sub-seccion reveal">Elige, toca un botón y tu idea nos llega lista por WhatsApp. Sin formularios largos, sin esperas.</p>
+    <div class="conf-box reveal">
+      <div class="conf-paso">
+        <h3><span class="n">1</span> ¿Qué celebras?</h3>
+        <div class="chips" id="chipsTipo">
+          <button class="chip">Boda</button><button class="chip">XV años</button><button class="chip">Cumpleaños</button><button class="chip">Baby shower</button><button class="chip">Corporativo</button><button class="chip">Religioso</button><button class="chip">Otro</button>
+        </div>
+        <input type="text" class="conf-input" id="otroTipo" placeholder="Escribe qué celebras (ej. Aniversario, Graduación…)" maxlength="60" hidden>
+      </div>
+      <div class="conf-paso">
+        <h3><span class="n">2</span> ¿Qué estilo imaginas?</h3>
+        <div class="chips" id="chipsEstilo">
+          <button class="chip">Elegante</button><button class="chip">Premium</button><button class="chip">Romántico</button><button class="chip">Rústico</button><button class="chip">Moderno</button><button class="chip">Temático</button>
+        </div>
+      </div>
+      <div class="conf-paso">
+        <h3><span class="n">3</span> ¿Qué colores te enamoran?</h3>
+        <div class="muestras" id="chipsColor">
+          <button class="muestra" data-color="Blanco y verde"><span class="puntos"><i style="background:#f5f2e8"></i><i style="background:#2f6b3f"></i></span>Blanco y verde</button>
+          <button class="muestra" data-color="Rosa y blanco"><span class="puntos"><i style="background:#e78bb0"></i><i style="background:#f7f3ee"></i></span>Rosa y blanco</button>
+          <button class="muestra" data-color="Rojo y dorado"><span class="puntos"><i style="background:#9c1420"></i><i style="background:#D6A342"></i></span>Rojo y dorado</button>
+          <button class="muestra" data-color="Vino y rosa"><span class="puntos"><i style="background:#6e1a2e"></i><i style="background:#d88ca2"></i></span>Vino y rosa</button>
+          <button class="muestra" data-color="Tonos pastel"><span class="puntos"><i style="background:#f3c6d3"></i><i style="background:#cfe3d4"></i></span>Tonos pastel</button>
+          <button class="muestra" data-color="Dorado y verde"><span class="puntos"><i style="background:#D6A342"></i><i style="background:#003020"></i></span>Dorado y verde</button>
+          <button class="muestra" data-color="Otro"><span class="puntos"><i style="background:linear-gradient(120deg,#e78bb0,#D6A342,#2f6b3f)"></i></span>Otro</button>
+        </div>
+        <input type="text" class="conf-input" id="otroColor" placeholder="Escribe el color o combinación que imaginas" maxlength="60" hidden>
+      </div>
+      <div class="conf-resumen">
+        <p>Tu evento soñado:</p>
+        <p class="ver" id="confTexto">Elige las 3 opciones de arriba ✦</p>
+        <small>Al enviar, tu idea llega directo a nuestro WhatsApp Business</small>
+        <a class="btn-oro" id="confBtn" href="#" style="opacity:.4;pointer-events:none">Enviar mi idea por WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACTO ============ -->
+<section class="contacto" id="contacto">
+  <div class="wrap">
+    <p class="kicker reveal">Hablemos</p>
+    <h2 class="titulo-seccion reveal">Tu evento empieza con un mensaje</h2>
+    <p class="sub-seccion reveal">&nbsp;</p>
+    <div class="cont-grid">
+      <div class="reveal">
+        <div class="cont-item">
+          <svg viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 01-12.4 7.5L3 21l2-5.4A8.5 8.5 0 1121 11.5z"/></svg>
+          <div><b>WhatsApp Business</b><span>+503 6292-118</span></div>
+        </div>
+        <div class="cont-item">
+          <svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z" opacity="0"/><path d="M3 6l9 7 9-7M3 6v12h18V6H3z"/></svg>
+          <div><b>Correo</b><span>zacapafloral@gmail.com</span></div>
+        </div>
+        <div class="cont-item">
+          <svg viewBox="0 0 24 24"><path d="M12 21s-7-6.1-7-11a7 7 0 0114 0c0 4.9-7 11-7 11z"/><circle cx="12" cy="10" r="2.6"/></svg>
+          <div><b>Ubicación</b><span>Nahuizalco, Sonsonate, El Salvador</span></div>
+        </div>
+      </div>
+      <div class="reveal">
+        <h3 style="font-size:.95rem;color:#fff;margin-bottom:8px">Síguenos y mira cada nuevo trabajo</h3>
+        <p style="font-size:.85rem;color:var(--humo)">Publicamos el proceso y el resultado de cada decoración en nuestras redes oficiales.</p>
+        <div class="redes">
+          <a class="red" href="https://www.tiktok.com/@zacapafloral?is_from_webapp=1&sender_device=pc" target="_blank" rel="noopener" title="TikTok" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M9 12a4 4 0 104 4V4c.6 2.6 2.4 4.5 5 5"/></svg></a>
+          <a class="red" href="https://www.facebook.com/profile.php?id=61594466720487&locale=es_LA" target="_blank" rel="noopener" title="Facebook" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M15 3h-2a4 4 0 00-4 4v3H6v4h3v7h4v-7h3l1-4h-4V7a1 1 0 011-1h2z"/></svg></a>
+          <a class="red" href="https://www.instagram.com/zacapafloral/" target="_blank" rel="noopener" title="Instagram" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+          <a class="red" href="https://wa.me/50362921118" target="_blank" rel="noopener" title="WhatsApp Business" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 01-12.4 7.5L3 21l2-5.4A8.5 8.5 0 1121 11.5z"/></svg></a>
+        </div>
+        <div style="margin-top:40px">
+          <a class="btn-oro" href="https://wa.me/50362921118?text=Hola%20Zacapa%20Floral%2C%20quiero%20informaci%C3%B3n%20sobre%20sus%20servicios." target="_blank" rel="noopener">Escríbenos ahora</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <img src="img/logo-horizontal.jpg" alt="Zacapa Floral">
+  <p>Zacapa Floral · Nahuizalco, Sonsonate, El Salvador · © 2026
+  <span class="script">No decoramos espacios; transformamos emociones en recuerdos</span></p>
+</footer>
+
+<!-- ============ BOTÓN FLOTANTE WHATSAPP ============ -->
+<a class="fab" href="https://wa.me/50362921118?text=Hola%20Zacapa%20Floral%2C%20vi%20su%20sitio%20web%20y%20quiero%20cotizar%20un%20evento." target="_blank" rel="noopener" aria-label="Cotizar por WhatsApp" title="Cotiza por WhatsApp">
+  <svg viewBox="0 0 32 32"><path d="M16 3C9.4 3 4 8.4 4 15c0 2.1.6 4.2 1.6 6L4 29l8.2-1.5c1.2.5 2.5.7 3.8.7 6.6 0 12-5.4 12-12S22.6 3 16 3zm6.2 16.9c-.3.8-1.6 1.5-2.2 1.6-.6.1-1.3.1-2.1-.1-.5-.2-1.1-.4-1.9-.7-3.3-1.4-5.5-4.8-5.6-5-.2-.2-1.4-1.8-1.4-3.5s.9-2.5 1.2-2.8c.3-.3.7-.4.9-.4h.7c.2 0 .5-.1.8.6.3.8 1.1 2.6 1.2 2.8.1.2.1.4 0 .7-.4.8-.9 1.2-.6 1.6.8 1.4 1.8 2.3 3.2 3 .4.2.6.2.8-.1.2-.2.9-1 1.1-1.4.2-.4.5-.3.8-.2.3.1 2 1 2.4 1.1.3.2.5.3.6.4.1.2.1.7-.1 1.4z"/></svg>
+</a>
+
+<script>
+/* ===== encabezado al hacer scroll ===== */
+const header=document.getElementById('header');
+addEventListener('scroll',()=>header.classList.toggle('solido',scrollY>40));
+
+/* ===== menú móvil ===== */
+const hamb=document.getElementById('hamb'),menu=document.getElementById('menu');
+hamb.addEventListener('click',()=>{menu.classList.toggle('abierto');hamb.classList.toggle('x')});
+menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{menu.classList.remove('abierto');hamb.classList.remove('x')}));
+
+/* ===== pétalos reales de rosa en dorado ===== */
+const cont=document.getElementById('petalos');
+const petalos=['img/petalo-1.webp','img/petalo-2.webp','img/petalo-3.webp','img/petalo-4.webp'];
+for(let i=0;i<12;i++){
+  const p=document.createElement('img');p.className='petal';p.alt='';
+  p.src=petalos[i%petalos.length];
+  const s=34+Math.random()*46;
+  p.style.cssText=`left:${Math.random()*100}vw;width:${s}px;animation-duration:${10+Math.random()*11}s;animation-delay:${Math.random()*13}s;`;
+  cont.appendChild(p);
+}
+
+/* ===== revelado al hacer scroll ===== */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* ===== slider antes/después ===== */
+const ba=document.getElementById('ba');
+function moverBa(e){
+  const r=ba.getBoundingClientRect();
+  const x=(e.touches?e.touches[0].clientX:e.clientX)-r.left;
+  ba.style.setProperty('--pos',Math.min(96,Math.max(4,x/r.width*100))+'%');
+}
+let arrastrando=false;
+ba.addEventListener('pointerdown',e=>{arrastrando=true;moverBa(e);ba.setPointerCapture(e.pointerId)});
+ba.addEventListener('pointermove',e=>arrastrando&&moverBa(e));
+addEventListener('pointerup',()=>arrastrando=false);
+
+/* ===== galería por categorías (dinámica) ===== */
+const ORDEN_CATS=[
+  ["premium","Premium"],["jardineras","Jardineras"],["arcos","Arcos decorativos"],
+  ["frutales","Frutales"],["invitaciones","Invitaciones"],["religiosos","Religiosos"],
+  ["centros","Centros de mesa"],["mesa-honor","Mesa de honor"],["ramos","Ramos"],
+  ["pesames","Pésames"],["arreglos","Arreglos florales"],["obsequios","Obsequios"],["otros","Otros"]
+];
+/* [archivo (sin extensión), categoría] — agregar aquí las nuevas fotos */
+/* [archivo (sin extensión), categoría] — las 50 fotos reales de Zacapa Floral */
+const FOTOS=[
+  /* --- Premium (11) --- */
+  ["premium-cascada-2","premium"],
+  ["premium-cascada-1","premium"],
+  ["premium-espacio","premium"],
+  ["premium-abanico-2","premium"],
+  ["premium-aspiral-3","premium"],
+  ["premium-parejas-4","premium"],
+  ["premium-candelabro-5b","premium"],
+  ["premium-candelabro-5","premium"],
+  ["premium-6","premium"],
+  ["premium-7","premium"],
+  ["premium-colgante-8","premium"],
+  /* --- Jardineras (6) --- */
+  ["jardinera-1","jardineras"],
+  ["jardinera-2","jardineras"],
+  ["jardinera-3","jardineras"],
+  ["jardinera-4","jardineras"],
+  ["jardinera-5","jardineras"],
+  ["jardinera-6","jardineras"],
+  /* --- Arcos decorativos (1) --- */
+  ["arco-1","arcos"],
+  /* --- Frutales (3) --- */
+  ["frutal-1","frutales"],
+  ["frutal-2","frutales"],
+  ["frutal-3","frutales"],
+  /* --- Religiosos (9) --- */
+  ["religioso-arco-1-1","religiosos"],
+  ["religioso-arco-1-2","religiosos"],
+  ["religioso-cirio-1-3","religiosos"],
+  ["religioso-pila-4","religiosos"],
+  ["religioso-anda-5","religiosos"],
+  ["religioso-divino-6","religiosos"],
+  ["religioso-divino-7","religiosos"],
+  ["religioso-cirio-2","religiosos"],
+  ["religioso-santisimo-3","religiosos"],
+  /* --- Centros de mesa (3) --- */
+  ["centro-1","centros"],
+  ["centro-2","centros"],
+  ["centro-3","centros"],
+  /* --- Mesa de honor (2) --- */
+  ["honor-1","mesa-honor"],
+  ["honor-2","mesa-honor"],
+  /* --- Ramos (2) --- */
+  ["ramo-1","ramos"],
+  ["ramo-eternas-2","ramos"],
+  /* --- Pésames (5) --- */
+  ["pesame-cruz-1","pesames"],
+  ["pesame-denario-2","pesames"],
+  ["pesame-3","pesames"],
+  ["pesame-4","pesames"],
+  ["pesame-5","pesames"],
+  /* --- Arreglos florales (3) --- */
+  ["arreglo-1","arreglos"],
+  ["arreglo-2","arreglos"],
+  ["arreglo-3","arreglos"],
+  /* --- Obsequios (3) --- */
+  ["obsequio-1","obsequios"],
+  ["obsequio-2","obsequios"],
+  ["obsequio-3","obsequios"],
+  /* --- Invitaciones (1) --- */
+  ["invitacion-1","invitaciones"],
+  /* --- Otros (1) --- */
+  ["ramo-frases","otros"]
+];
+const grid=document.getElementById('grid'),tabsG=document.getElementById('tabsGaleria');
+function rondaFotos(cat){
+  return FOTOS.filter(f=>f[1]===cat);
+}
+function pintarGaleria(cat){
+  grid.innerHTML='';
+  rondaFotos(cat).forEach(([base])=>{
+    const f=document.createElement('figure');f.className='foto';
+    f.innerHTML=`<picture><source srcset="img/${base}.webp" type="image/webp"><img src="img/${base}.jpg" alt="Trabajo floral de Zacapa Floral" loading="lazy"></picture>`;
+    f.addEventListener('click',()=>abrirLb(f.querySelector('img')));
+    grid.appendChild(f);
+  });
+}
+const catsPresentes=new Set(FOTOS.map(f=>f[1]));
+let primerTab=null;
+ORDEN_CATS.forEach(([val,label])=>{
+  if(catsPresentes.has(val)&&primerTab===null)primerTab=val;
+});
+const mkTab=(val,label,activo)=>{
+  const b=document.createElement('button');b.className='tab'+(activo?' activo':'');
+  b.textContent=label;b.dataset.tab=val;
+  b.addEventListener('click',()=>{
+    document.querySelectorAll('#tabsGaleria .tab').forEach(x=>x.classList.remove('activo'));
+    b.classList.add('activo');pintarGaleria(val);
+  });
+  return b;
+};
+tabsG.appendChild(mkTab('premium','Premium',true));
+ORDEN_CATS.forEach(([val,label])=>{if(catsPresentes.has(val)&&val!=='premium')tabsG.appendChild(mkTab(val,label,false));});
+pintarGaleria('premium');
+
+/* ===== cinta: 10 fotos premium destacadas ===== */
+/* ===== cinta: las 14 fotos elegidas por el dueño ===== */
+const CINTA=[
+  "jardinera-1","premium-abanico-2","premium-cascada-1","premium-candelabro-5b","premium-aspiral-3",
+  "frutal-3","religioso-divino-7","religioso-arco-1-1","religioso-cirio-1-3","centro-1",
+  "ramo-1","pesame-cruz-1","arreglo-1","jardinera-3"
+];
+const cinta=document.getElementById('cinta');
+cinta.innerHTML=CINTA.map(b=>`<picture><source srcset="img/${b}.webp" type="image/webp"><img src="img/${b}.jpg" alt="" loading="lazy"></picture>`).join('');
+cinta.innerHTML+=cinta.innerHTML;
+const lb=document.getElementById('lightbox'),lbImg=document.getElementById('lbImg');
+document.getElementById('lbPie').style.display='none';
+function abrirLb(img){
+  lbImg.src=img.src;lbImg.alt=img.alt;
+  lb.classList.add('abierto');document.body.style.overflow='hidden';
+}
+const cerrarLb=()=>{lb.classList.remove('abierto');document.body.style.overflow=''};
+document.getElementById('lbCerrar').addEventListener('click',cerrarLb);
+lb.addEventListener('click',e=>e.target===lb&&cerrarLb());
+addEventListener('keydown',e=>e.key==='Escape'&&cerrarLb());
+
+/* ===== configurador ===== */
+const sel={tipo:null,estilo:null,color:null};
+const otroTipo=document.getElementById('otroTipo'),otroColor=document.getElementById('otroColor');
+function marcar(grupo,btn,cls){document.querySelectorAll('#'+grupo+' .'+cls).forEach(c=>c.classList.remove('sel'));btn.classList.add('sel')}
+document.querySelectorAll('#chipsTipo .chip').forEach(c=>c.addEventListener('click',()=>{
+  sel.tipo=c.textContent;marcar('chipsTipo',c,'chip');
+  otroTipo.hidden=c.textContent!=='Otro';if(c.textContent==='Otro')otroTipo.focus();actualizarConf();
+}));
+document.querySelectorAll('#chipsEstilo .chip').forEach(c=>c.addEventListener('click',()=>{sel.estilo=c.textContent;marcar('chipsEstilo',c,'chip');actualizarConf()}));
+document.querySelectorAll('#chipsColor .muestra').forEach(c=>c.addEventListener('click',()=>{
+  sel.color=c.dataset.color;marcar('chipsColor',c,'muestra');
+  otroColor.hidden=c.dataset.color!=='Otro';if(c.dataset.color==='Otro')otroColor.focus();actualizarConf();
+}));
+otroTipo.addEventListener('input',actualizarConf);
+otroColor.addEventListener('input',actualizarConf);
+function actualizarConf(){
+  const t=document.getElementById('confTexto'),b=document.getElementById('confBtn');
+  const tipo=sel.tipo==='Otro'?(otroTipo.value.trim()||'Otro'):sel.tipo;
+  const color=sel.color==='Otro'?(otroColor.value.trim()||'Otro'):sel.color;
+  if(sel.tipo&&sel.estilo&&sel.color){
+    t.textContent=`${tipo} · Estilo ${sel.estilo.toLowerCase()} · ${color.toLowerCase()}`;
+    const msg=`Hola Zacapa Floral, vi su sitio web y quiero cotizar: ${tipo}, estilo ${sel.estilo}, en colores ${color}.`;
+    b.href='https://wa.me/50362921118?text='+encodeURIComponent(msg);
+    b.style.opacity=1;b.style.pointerEvents='auto';
+  }
+}
+</script>
+</body>
+</html>
