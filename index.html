@@ -156,6 +156,21 @@ background:radial-gradient(1100px 600px at 50% 18%,rgba(214,163,66,.10),transpar
 .lightbox .cerrar{position:absolute;top:22px;right:30px;background:none;border:none;color:var(--oro);font-size:2.2rem;cursor:pointer;line-height:1}
 .lightbox .pie{position:absolute;bottom:26px;left:0;right:0;text-align:center;font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--oro)}
 
+/* ---------- video lightbox (carga diferida) ---------- */
+.video-modal{position:fixed;inset:0;background:rgba(0,26,11,.94);z-index:210;display:none;align-items:center;justify-content:center;padding:24px;backdrop-filter:blur(8px)}
+.video-modal.abierto{display:flex}
+.video-modal__box{position:relative;width:min(92vw,900px);background:#000;border:1px solid var(--bronce);border-radius:16px;overflow:hidden;box-shadow:0 40px 120px rgba(0,0,0,.7);max-height:92vh;display:flex;flex-direction:column}
+.video-modal__ratio{position:relative;width:100%;aspect-ratio:16/9;background:#000;flex:0 0 auto}
+.video-modal__ratio.vertical{aspect-ratio:9/16;width:auto;max-width:420px;margin:0 auto;height:min(78vh,720px);flex:0 1 auto}
+.video-modal__ratio iframe,.video-modal__ratio video{position:absolute;inset:0;width:100%;height:100%;border:0;display:block;background:#000}
+.video-modal__ratio.vertical iframe,.video-modal__ratio.vertical video{object-fit:contain}
+.video-modal__close{position:absolute;top:14px;right:14px;z-index:3;width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.28);background:rgba(0,0,0,.55);color:#fff;font-size:1.7rem;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(6px);transition:.3s}
+.video-modal__close:hover{background:var(--oro);color:var(--noche);border-color:var(--oro);transform:rotate(90deg)}
+.video-modal__info{padding:16px 20px;background:linear-gradient(180deg,rgba(214,163,66,.09),transparent);border-top:1px solid rgba(214,163,66,.15);text-align:left}
+.video-modal__info h4{font-family:var(--serif);color:var(--oro);letter-spacing:.14em;text-transform:uppercase;font-size:.85rem;margin:0 0 4px}
+.video-modal__info p{color:var(--humo);font-size:.82rem;margin:0;line-height:1.5}
+.video-modal__info[hidden]{display:none !important}
+
 /* ---------- paquetes ---------- */
 .paq-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:26px;align-items:stretch}
 .paq{background:linear-gradient(170deg,rgba(214,163,66,.07),rgba(0,26,11,.35));border:1px solid var(--linea);border-radius:12px;padding:44px 34px;text-align:center;display:flex;flex-direction:column;transition:.4s;position:relative;overflow:hidden}
@@ -178,8 +193,9 @@ background:radial-gradient(1100px 600px at 50% 18%,rgba(214,163,66,.10),transpar
 /* ---------- videos ---------- */
 .videos{background:var(--noche)}
 .vid-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
-.vid{aspect-ratio:9/15;border:1px solid var(--linea);border-radius:12px;background:linear-gradient(165deg,rgba(2,66,44,.5),var(--noche));display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;text-align:center;padding:22px;transition:.35s;position:relative;overflow:hidden}
+.vid{appearance:none;-webkit-appearance:none;width:100%;font:inherit;font-family:var(--sans);aspect-ratio:9/15;border:1px solid var(--linea);border-radius:12px;background:linear-gradient(165deg,rgba(2,66,44,.5),var(--noche));display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;text-align:center;padding:22px;transition:.35s;position:relative;overflow:hidden;cursor:pointer;color:inherit}
 .vid:hover{border-color:var(--oro);transform:translateY(-6px)}
+.vid:focus-visible{outline:2px solid var(--oro);outline-offset:3px}
 .vid-play{width:64px;height:64px;border-radius:50%;border:1.5px solid var(--oro);display:flex;align-items:center;justify-content:center;color:var(--oro);transition:.35s}
 .vid:hover .vid-play{background:var(--oro);color:var(--noche);box-shadow:0 0 30px rgba(214,163,66,.5)}
 .vid h4{font-family:var(--serif);letter-spacing:.14em;font-size:.85rem;color:#fff;text-transform:uppercase}
@@ -404,7 +420,19 @@ footer .script{font-family:var(--script);color:var(--oro);font-size:1.3rem;lette
   <p class="pie" id="lbPie"></p>
 </div>
 
-<!-- ============ PAQUETES ============ -->
+<!-- ============ VIDEO MODAL (carga diferida - 0 bytes hasta clic) ============ -->
+<div class="video-modal" id="videoModal" role="dialog" aria-modal="true" aria-label="Reproductor de video" aria-hidden="true" hidden>
+  <div class="video-modal__box" id="vmBox" role="document">
+    <button class="video-modal__close" id="vmClose" aria-label="Cerrar video" type="button">×</button>
+    <div class="video-modal__ratio" id="vmRatio">
+      <div id="videoContainer" style="position:absolute;inset:0"></div>
+    </div>
+    <div class="video-modal__info" id="vmInfo" hidden>
+      <h4 id="vmTitle"></h4>
+      <p id="vmDesc"></p>
+    </div>
+  </div>
+</div>
 <section id="paquetes">
   <div class="wrap">
     <p class="kicker reveal">Nuestros servicios</p>
@@ -467,26 +495,77 @@ footer .script{font-family:var(--script);color:var(--oro);font-size:1.3rem;lette
     <p class="kicker reveal">Detrás de cámaras</p>
     <h2 class="titulo-seccion reveal">Nuestro proceso en video</h2>
     <p class="sub-seccion reveal">Aquí podrás ver cómo nace cada decoración: la preparación, el montaje y el momento en que el espacio cobra vida. Contenido que también encuentras en nuestras redes.</p>
+    <!--
+      🎬 CÓMO AGREGAR TUS VIDEOS (0 bytes hasta hacer clic):
+      1. Sube tu video a YouTube, TikTok, Vimeo o como MP4 en tu hosting.
+      2. Copia el LINK y pégalo en el atributo data-video de cada botón.
+         Ejemplos válidos:
+           YouTube:  https://www.youtube.com/watch?v=kl1uIPekSbE  ó  https://youtu.be/kl1uIPekSbE  ó  https://www.youtube.com/shorts/XXXX
+           TikTok:   https://www.tiktok.com/@zacapafloral/video/7261234567890123456
+           Vimeo:    https://vimeo.com/123456789
+           MP4:      https://tusitio.com/videos/montaje.mp4  ó  img/videos/montaje.mp4
+      3. Cambia data-title y data-desc si quieres (aparecen en el modal).
+      4. Para videos verticales (9:16 TikTok/Reels) agrega data-orientacion="vertical".
+      5. Si aún no tienes video deja data-video="" y quedará como "Próximamente" con botón a WhatsApp.
+      ⚡️ El video NO se carga hasta que el visitante toca el botón → la página sigue liviana.
+    -->
     <div class="vid-grid reveal">
-      <a class="vid" href="https://wa.me/50362922118?text=Hola%2C%20quiero%20ver%20videos%20de%20sus%20montajes." target="_blank" rel="noopener">
-        <span class="badge">Próximamente</span>
-        <span class="vid-play">▶</span>
+      <button class="vid" type="button"
+        data-video="https://www.youtube.com/watch?v=kl1uIPekSbE"
+        data-title="El montaje, paso a paso"
+        data-desc="Del salón vacío al evento terminado, en tiempo real."
+        aria-label="Ver video: El montaje, paso a paso">
+        <span class="badge">Ver video · YouTube</span>
+        <span class="vid-play" aria-hidden="true">▶</span>
         <h4>El montaje, paso a paso</h4>
         <p>Del salón vacío al evento terminado, en tiempo real.</p>
-      </a>
-      <a class="vid" href="https://wa.me/50362922118?text=Hola%2C%20quiero%20ver%20videos%20de%20sus%20arreglos%20florales." target="_blank" rel="noopener">
-        <span class="badge">Próximamente</span>
-        <span class="vid-play">▶</span>
+      </button>
+      <button class="vid" type="button"
+        data-video="https://www.youtube.com/watch?v=oSfVgn7oC_I"
+        data-title="Así nace un arreglo floral"
+        data-desc="De la flor cruda al detalle final, pétalo por pétalo."
+        aria-label="Ver video: Así nace un arreglo floral">
+        <span class="badge">Ver video · YouTube</span>
+        <span class="vid-play" aria-hidden="true">▶</span>
         <h4>Así nace un arreglo floral</h4>
         <p>De la flor cruda al detalle final, pétalo por pétalo.</p>
-      </a>
-      <a class="vid" href="https://wa.me/50362922118?text=Hola%2C%20quiero%20ver%20la%20reacci%C3%B3n%20de%20sus%20clientes%20al%20ver%20la%20decoraci%C3%B3n." target="_blank" rel="noopener">
-        <span class="badge">Próximamente</span>
-        <span class="vid-play">▶</span>
+      </button>
+      <button class="vid" type="button"
+        data-video="https://www.youtube.com/watch?v=ZRUK-Saoj_I"
+        data-title="La reacción del cliente"
+        data-desc="El momento exacto en que el espacio se convierte en emoción."
+        aria-label="Ver video: La reacción del cliente">
+        <span class="badge">Ver video · YouTube</span>
+        <span class="vid-play" aria-hidden="true">▶</span>
         <h4>La reacción del cliente</h4>
         <p>El momento exacto en que el espacio se convierte en emoción.</p>
-      </a>
+      </button>
     </div>
+    <!-- Ejemplo de video vertical TikTok (descomenta y pon tu link real):
+    <button class="vid" type="button"
+      data-video="https://www.tiktok.com/@zacapafloral/video/7261234567890123456"
+      data-orientacion="vertical"
+      data-title="Montaje vertical TikTok"
+      data-desc="Ejemplo vertical 9:16"
+      aria-label="Ver video vertical">
+      <span class="badge">Ver video · TikTok</span>
+      <span class="vid-play">▶</span>
+      <h4>Video TikTok vertical</h4>
+      <p>Toca para reproducir (9:16).</p>
+    </button>
+    -->
+    <!-- Ejemplo MP4 propio:
+    <button class="vid" type="button"
+      data-video="img/videos/demo.mp4"
+      data-title="Demo MP4"
+      data-desc="Video alojado en tu propio hosting"
+      aria-label="Ver video MP4">
+      <span class="badge">Ver video · MP4</span>
+      <span class="vid-play">▶</span>
+      <h4>Video MP4</h4>
+      <p>Se reproduce sin salir de la web.</p>
+    </button>
+    -->
   </div>
 </section>
 
@@ -854,10 +933,184 @@ function abrirLb(img){
   lbImg.src=img.src;lbImg.alt=img.alt;
   lb.classList.add('abierto');document.body.style.overflow='hidden';
 }
-const cerrarLb=()=>{lb.classList.remove('abierto');document.body.style.overflow=''};
+const cerrarLb=()=>{lb.classList.remove('abierto');if(!document.getElementById('videoModal').classList.contains('abierto'))document.body.style.overflow=''};
 document.getElementById('lbCerrar').addEventListener('click',cerrarLb);
 lb.addEventListener('click',e=>e.target===lb&&cerrarLb());
 addEventListener('keydown',e=>e.key==='Escape'&&cerrarLb());
+
+/* ===== video lightbox — carga diferida (0 bytes hasta clic) ===== */
+(function(){
+  const vm=document.getElementById('videoModal');
+  const vmClose=document.getElementById('vmClose');
+  const vmRatio=document.getElementById('vmRatio');
+  const vmBox=document.getElementById('vmBox');
+  const container=document.getElementById('videoContainer');
+  const vmInfo=document.getElementById('vmInfo');
+  const vmTitle=document.getElementById('vmTitle');
+  const vmDesc=document.getElementById('vmDesc');
+  if(!vm||!container) return;
+
+  function parseVideo(raw){
+    const url=(raw||'').trim();
+    if(!url || url==='#') return null;
+    // MP4 / WEBM directo
+    if(/\.(mp4|webm|ogg|mov)(\?.*)?$/i.test(url)){
+      return {type:'mp4', src:url, vertical: false};
+    }
+    // YouTube
+    let m=url.match(/(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/|live\/)|youtu\.be\/)([A-Za-z0-9_-]{11})/);
+    if(m){
+      const id=m[1];
+      return {type:'youtube', src:'https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&rel=0&modestbranding=1&playsinline=1&enablejsapi=1', id:id, vertical:false};
+    }
+    if(url.includes('youtube.com')||url.includes('youtu.be')){
+      // fallback si no capturó id pero es youtube
+      try{ const u=new URL(url); const v=u.searchParams.get('v'); if(v) return {type:'youtube', src:'https://www.youtube-nocookie.com/embed/'+v+'?autoplay=1&rel=0&modestbranding=1&playsinline=1', id:v}; }catch(e){}
+    }
+    // TikTok
+    m=url.match(/tiktok\.com\/.*\/video\/(\d+)/);
+    if(m){
+      const id=m[1];
+      return {type:'tiktok', src:'https://www.tiktok.com/embed/'+id, id:id, vertical:true};
+    }
+    if(url.includes('tiktok.com')){
+      // intentar embed directo si ya es embed
+      if(url.includes('/embed/')) return {type:'tiktok', src:url, vertical:true};
+    }
+    // Vimeo
+    m=url.match(/vimeo\.com\/(?:video\/)?(\d+)/);
+    if(m){
+      const id=m[1];
+      return {type:'vimeo', src:'https://player.vimeo.com/video/'+id+'?autoplay=1&title=0&byline=0&portrait=0', id:id, vertical:false};
+    }
+    // Instagram
+    m=url.match(/instagram\.com\/(?:p|reel|tv)\/([A-Za-z0-9_-]+)/);
+    if(m){
+      const id=m[1];
+      const kind=url.includes('/reel/')?'reel': url.includes('/tv/')?'tv':'p';
+      return {type:'instagram', src:'https://www.instagram.com/'+kind+'/'+id+'/embed', id:id, vertical:true};
+    }
+    // Facebook video
+    if(url.includes('facebook.com') && url.includes('/videos/')){
+      return {type:'iframe', src:url, vertical:false};
+    }
+    // Por defecto iframe genérico
+    return {type:'iframe', src:url, vertical:false};
+  }
+
+  function crearElementoVideo(parsed, rawUrl){
+    if(!parsed) return null;
+    if(parsed.type==='mp4'){
+      const v=document.createElement('video');
+      v.controls=true; v.autoplay=true; v.playsInline=true; v.preload='metadata';
+      v.style.cssText='width:100%;height:100%;object-fit:contain;background:#000';
+      v.setAttribute('controlsList','nodownload');
+      const s=document.createElement('source');
+      s.src=parsed.src;
+      // inferir tipo
+      if(parsed.src.toLowerCase().endsWith('.webm')) s.type='video/webm';
+      else if(parsed.src.toLowerCase().endsWith('.ogg')) s.type='video/ogg';
+      else s.type='video/mp4';
+      v.appendChild(s);
+      v.innerHTML+='Tu navegador no soporta video HTML5.';
+      return v;
+    } else {
+      const f=document.createElement('iframe');
+      f.src=parsed.src;
+      f.allow='autoplay; fullscreen; encrypted-media; picture-in-picture; clipboard-write';
+      f.allowFullscreen=true;
+      f.loading='eager';
+      f.referrerPolicy='strict-origin-when-cross-origin';
+      f.title='Video Zacapa Floral';
+      // autoplay necesita allow autoplay
+      if(parsed.type==='youtube') f.allow+='; accelerometer; gyroscope';
+      return f;
+    }
+  }
+
+  function abrirVideo(url, titulo, desc, orientacion){
+    const parsed=parseVideo(url);
+    const esVertical=(orientacion==='vertical'||orientacion==='9:16'|| (parsed && parsed.vertical));
+    // Configurar ratio
+    vmRatio.classList.toggle('vertical', !!esVertical);
+    // Título / desc
+    if(titulo || desc){
+      vmTitle.textContent=titulo||'';
+      vmDesc.textContent=desc||'';
+      vmInfo.hidden=false;
+      vmInfo.style.display='';
+    } else {
+      vmInfo.hidden=true;
+    }
+    // Limpiar y crear contenido
+    container.innerHTML='';
+    if(!parsed){
+      // Próximamente — sin video aún
+      container.innerHTML='<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;padding:32px 24px;text-align:center;color:var(--champ);background:radial-gradient(600px 400px at 50% 20%,rgba(214,163,66,.12),transparent 60%),linear-gradient(180deg,#001A0B,#003020)"><div style="width:64px;height:64px;border-radius:50%;border:1.5px solid var(--oro);display:flex;align-items:center;justify-content:center;color:var(--oro);font-size:1.4rem;margin-bottom:16px">✦</div><h4 style="font-family:var(--serif);letter-spacing:.14em;color:#fff;font-size:1rem;margin:0 0 8px;text-transform:uppercase">'+(titulo||'Video próximamente')+'</h4><p style="color:var(--humo);font-size:.9rem;max-width:420px;margin:0 0 22px;line-height:1.6">'+(desc||'Estamos preparando este video para ti. Escríbenos por WhatsApp y te lo enviamos en cuanto esté listo.')+'</p><a class="btn-oro" href="https://wa.me/50362922118?text=Hola%20Zacapa%20Floral%2C%20quiero%20ver%20sus%20videos." target="_blank" rel="noopener">Pedir video por WhatsApp</a></div>';
+      // Para placeholder, mantener ratio 16:9 normal (no vertical) y altura fija
+      vmRatio.classList.remove('vertical');
+    } else {
+      const el=crearElementoVideo(parsed, url);
+      if(el) container.appendChild(el);
+    }
+    vm.hidden=false;
+    vm.removeAttribute('hidden');
+    vm.setAttribute('aria-hidden','false');
+    vm.classList.add('abierto');
+    document.body.style.overflow='hidden';
+    // foco en close para accesibilidad
+    setTimeout(()=>vmClose.focus({preventScroll:true}), 30);
+  }
+
+  function cerrarVideo(){
+    vm.classList.remove('abierto');
+    vm.setAttribute('aria-hidden','true');
+    // Esperar transición para ocultar y limpiar video (detener reproducción)
+    setTimeout(()=>{
+      if(!vm.classList.contains('abierto')){
+        container.innerHTML='';
+        vm.hidden=true;
+        vm.setAttribute('hidden','');
+        if(!lb.classList.contains('abierto')) document.body.style.overflow='';
+      }
+    }, 180);
+    vmInfo.hidden=true;
+  }
+
+  // Exponer global por si quiere abrir desde consola o links
+  window.abrirVideoZacapa=abrirVideo;
+  window.cerrarVideoZacapa=cerrarVideo;
+
+  // Delegación para todos los botones .vid
+  document.querySelectorAll('.vid').forEach(btn=>{
+    // Solo botones con data-video son videos; si no tiene, lo tratamos como próximamente
+    btn.addEventListener('click', (e)=>{
+      e.preventDefault();
+      const url=btn.getAttribute('data-video')||'';
+      const titulo=btn.getAttribute('data-title')|| btn.querySelector('h4')?.textContent?.trim()||'';
+      const desc=btn.getAttribute('data-desc')|| btn.querySelector('p')?.textContent?.trim()||'';
+      const orient=btn.getAttribute('data-orientacion')|| btn.getAttribute('data-orientation')||'';
+      // Si no hay video y tampoco es un botón de video (legacy <a>), permitir navegación normal
+      if(!url && btn.tagName==='A' && btn.href){
+        window.open(btn.href,'_blank','noopener');
+        return;
+      }
+      abrirVideo(url, titulo, desc, orient);
+    });
+  });
+
+  // Cerrar por botón X, clic fuera y ESC
+  vmClose.addEventListener('click', cerrarVideo);
+  vm.addEventListener('click', (e)=>{ if(e.target===vm) cerrarVideo(); });
+  addEventListener('keydown', (e)=>{
+    if(e.key==='Escape' && vm.classList.contains('abierto')){
+      e.preventDefault();
+      cerrarVideo();
+    }
+  });
+  // Cerrar si cambia hash o navegación
+  addEventListener('hashchange', ()=>{ if(vm.classList.contains('abierto')) cerrarVideo(); });
+})();
 
 /* ===== configurador ===== */
 const sel={tipo:null,estilo:null,color:null};
