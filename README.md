@@ -4,7 +4,7 @@
 
 Sitio web one-page de Zacapa Floral: alta floristería y diseño floral para eventos,
 desde Nahuizalco, Sonsonate, El Salvador. El objetivo del sitio es convertir visitas en
-cotizaciones por **WhatsApp Business (+503 6292-118)**.
+cotizaciones por **WhatsApp Business (+503 6292 2118)**.
 
 Contacto: zacapafloral@gmail.com · TikTok/Facebook/Instagram: @zacapafloral
 
@@ -24,9 +24,36 @@ Contacto: zacapafloral@gmail.com · TikTok/Facebook/Instagram: @zacapafloral
 ```
 zacapa-floral-web/
 ├── index.html      → todo el sitio (estilos y scripts incrustados)
+├── sitemap.xml     → mapa del sitio para Google Search Console (1 URL + fotos de la galería)
+├── robots.txt      → permite el rastreo e indica dónde está el sitemap
 ├── vercel.json     → caché de imágenes y URLs limpias
 └── img/            → logos, fotos de trabajos, salón antes/después, favicons
 ```
+
+## 🔎 Google Search Console (sitemap)
+
+- **Dominio oficial:** `https://www.zacapafloral.com` (sin `www` redirige al `www`).
+  El `sitemap.xml`, el `robots.txt`, el `<link rel="canonical">` y el `og:url`/`og:image`
+  de `index.html` usan todos exactamente ese dominio.
+- **Enviar el sitemap (una sola vez):** primero publica el sitio (merge a `main` →
+  Vercel despliega), comprueba en el navegador que abre
+  `https://www.zacapafloral.com/sitemap.xml`, y luego en
+  [Google Search Console](https://search.google.com/search-console) ve a
+  **Indexación → Sitemaps**, escribe solo `sitemap.xml` y pulsa **Enviar**.
+  El estado debe quedar en **Correcto**. No hay que reenviarlo en cada cambio:
+  Google lo revisa solo periódicamente (también está anunciado en `robots.txt`).
+- **Es un sitio de una sola página**, por eso el sitemap lleva **una única URL**
+  (`https://www.zacapafloral.com/`). No agregues las secciones con `#`
+  (`/#galeria`, `/#paquetes`…): Google las ignora porque no son páginas separadas.
+  Si algún día creas páginas nuevas, agrega cada una como un `<url>` más.
+- **Fotos:** dentro de esa URL van listadas las fotos de la galería con la
+  extensión de imágenes (`<image:image>`), para ayudar a que aparezcan en
+  Google Imágenes (la galería se carga con JavaScript y así Google las descubre
+  todas, no solo la primera categoría). Al agregar una foto nueva al arreglo
+  `FOTOS` de `index.html`, agrega también su bloque `<image:image>` en
+  `sitemap.xml` (copia uno y cambia el nombre del archivo) y actualiza la
+  fecha `<lastmod>` a la del día del cambio. No marques fechas futuras ni
+  cambies la fecha si el contenido no cambió.
 
 ---
 

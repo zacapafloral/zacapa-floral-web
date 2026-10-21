@@ -1,0 +1,8 @@
+# robots.txt — Zacapa Floral (www.zacapafloral.com)
+# Permite a Google y demas buscadores rastrear todo el sitio
+# y les indica donde esta el sitemap.
+
+User-agent: *
+Allow: /
+
+Sitemap: https://www.zacapafloral.com/sitemap.xml
