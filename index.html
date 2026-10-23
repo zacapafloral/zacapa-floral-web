@@ -23,7 +23,7 @@
   "name": "Zacapa Floral",
   "url": "https://www.zacapafloral.com/",
   "image": "https://www.zacapafloral.com/img/og-cover.jpg",
-  "logo": "https://www.zacapafloral.com/img/logo-principal.jpg",
+  "logo": "https://www.zacapafloral.com/img/logo-principal.png",
   "slogan": "No decoramos espacios; transformamos emociones en recuerdos",
   "description": "Diseño, decoración y producción integral de eventos: arreglos florales, ambientación de espacios y alquiler de mobiliario.",
   "telephone": "+50362922118",
@@ -86,7 +86,9 @@ section{position:relative;padding:100px 0}
 header{position:fixed;top:0;left:0;right:0;z-index:100;transition:.4s;padding:14px 0}
 header.solido{background:rgba(0,26,11,.92);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid var(--linea);padding:8px 0}
 .nav{display:flex;align-items:center;justify-content:space-between;gap:20px}
-.logo-nav{height:52px;width:auto;mix-blend-mode:screen}
+.nav > a{display:flex;align-items:center;line-height:0}
+.nav > a picture,.hero > picture,footer picture{display:contents}
+.logo-nav{height:52px;width:auto;filter:drop-shadow(0 2px 10px rgba(0,0,0,.45))}
 .nav-links{display:flex;gap:30px;list-style:none;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase}
 .nav-links a{position:relative;padding:6px 0;transition:.3s}
 .nav-links a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--oro);transition:.35s}
@@ -102,7 +104,7 @@ header.solido{background:rgba(0,26,11,.92);-webkit-backdrop-filter:blur(12px);ba
 /* ---------- héroe ---------- */
 .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:120px 20px 60px;
 background:radial-gradient(1100px 600px at 50% 18%,rgba(214,163,66,.10),transparent 60%),radial-gradient(900px 500px at 50% 110%,rgba(202,3,39,.05),transparent 60%),linear-gradient(180deg,var(--noche) 0%,var(--verde) 78%)}
-.hero-logo{width:min(320px,62vw);mix-blend-mode:screen;filter:brightness(1.06) saturate(1.1) drop-shadow(0 18px 60px rgba(0,0,0,.55));animation:aparecer 1.4s ease both}
+.hero-logo{width:min(320px,62vw);height:auto;filter:drop-shadow(0 18px 50px rgba(0,0,0,.6));animation:aparecer 1.4s ease both}
 .hero-eslogan{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:600;font-size:clamp(1.7rem,4.6vw,3.1rem);color:var(--champ);margin:30px 0 14px;animation:aparecer 1.4s .35s ease both;line-height:1.35;letter-spacing:.01em;text-transform:none;text-wrap:balance}
 .hero-eslogan em{color:var(--oro);font-style:italic}
 .hero-sub{max-width:650px;color:var(--humo);font-size:.95rem;letter-spacing:.05em;animation:aparecer 1.4s .6s ease both}
@@ -160,20 +162,30 @@ background:radial-gradient(1100px 600px at 50% 18%,rgba(214,163,66,.10),transpar
 .lightbox .cerrar{position:absolute;top:22px;right:30px;background:none;border:none;color:var(--oro);font-size:2.2rem;cursor:pointer;line-height:1}
 .lightbox .pie{position:absolute;bottom:26px;left:0;right:0;text-align:center;font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--oro)}
 
-/* ---------- video lightbox (carga diferida) ---------- */
-.video-modal{position:fixed;inset:0;background:rgba(0,26,11,.94);z-index:210;display:none;align-items:center;justify-content:center;padding:24px;backdrop-filter:blur(8px)}
+/* ---------- video lightbox (carga diferida · 100% responsivo) ---------- */
+.video-modal{position:fixed;inset:0;background:rgba(0,20,9,.93);z-index:210;display:none;align-items:center;justify-content:center;padding:max(14px,env(safe-area-inset-top)) max(14px,env(safe-area-inset-right)) max(14px,env(safe-area-inset-bottom)) max(14px,env(safe-area-inset-left));-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
 .video-modal.abierto{display:flex}
-.video-modal__box{position:relative;width:min(92vw,900px);background:#000;border:1px solid var(--bronce);border-radius:16px;overflow:hidden;box-shadow:0 40px 120px rgba(0,0,0,.7);max-height:92vh;display:flex;flex-direction:column}
+.video-modal__box{position:relative;width:min(94vw,940px,calc((100vh - 126px) * 16 / 9));width:min(94vw,940px,calc((100dvh - 126px) * 16 / 9));max-height:calc(100vh - 28px);max-height:calc(100dvh - 28px);background:#001208;border:1px solid var(--bronce);border-radius:16px;overflow:hidden;box-shadow:0 40px 120px rgba(0,0,0,.78);display:flex;flex-direction:column;animation:vmEntrar .26s cubic-bezier(.2,.8,.2,1) both}
+.video-modal__box.vertical{width:min(90vw,420px,calc((100vh - 126px) * 9 / 16));width:min(90vw,420px,calc((100dvh - 126px) * 9 / 16))}
+@keyframes vmEntrar{from{opacity:0;transform:scale(.96) translateY(10px)}to{opacity:1;transform:none}}
+.video-modal__head{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:13px 18px;background:linear-gradient(180deg,rgba(214,163,66,.10),rgba(0,26,11,.96));border-bottom:1px solid rgba(214,163,66,.22);flex:0 0 auto}
+.video-modal__meta{min-width:0;text-align:left}
+.video-modal__meta h4{font-family:var(--serif);color:var(--oro);letter-spacing:.14em;text-transform:uppercase;font-size:clamp(.74rem,2vw,.86rem);margin:0;line-height:1.35}
+.video-modal__meta p{color:var(--humo);font-size:clamp(.72rem,1.8vw,.8rem);margin:3px 0 0;line-height:1.45}
 .video-modal__ratio{position:relative;width:100%;aspect-ratio:16/9;background:#000;flex:0 0 auto}
-.video-modal__ratio.vertical{aspect-ratio:9/16;width:auto;max-width:420px;margin:0 auto;height:min(78vh,720px);flex:0 1 auto}
-.video-modal__ratio iframe,.video-modal__ratio video{position:absolute;inset:0;width:100%;height:100%;border:0;display:block;background:#000}
-.video-modal__ratio.vertical iframe,.video-modal__ratio.vertical video{object-fit:contain}
-.video-modal__close{position:absolute;top:14px;right:14px;z-index:3;width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.28);background:rgba(0,0,0,.55);color:#fff;font-size:1.7rem;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(6px);transition:.3s}
-.video-modal__close:hover{background:var(--oro);color:var(--noche);border-color:var(--oro);transform:rotate(90deg)}
-.video-modal__info{padding:16px 20px;background:linear-gradient(180deg,rgba(214,163,66,.09),transparent);border-top:1px solid rgba(214,163,66,.15);text-align:left}
-.video-modal__info h4{font-family:var(--serif);color:var(--oro);letter-spacing:.14em;text-transform:uppercase;font-size:.85rem;margin:0 0 4px}
-.video-modal__info p{color:var(--humo);font-size:.82rem;margin:0;line-height:1.5}
-.video-modal__info[hidden]{display:none !important}
+.video-modal__ratio.vertical{aspect-ratio:9/16}
+.video-modal__ratio iframe,.video-modal__ratio video{position:absolute;inset:0;width:100%;height:100%;border:0;display:block;background:#000;object-fit:contain;outline:none}
+.video-modal__close{flex:0 0 auto;width:40px;height:40px;border-radius:50%;border:1px solid rgba(214,163,66,.45);background:rgba(0,26,11,.85);color:var(--champ);font-size:1.55rem;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.28s}
+.video-modal__close:hover,.video-modal__close:focus-visible{background:var(--oro);color:var(--noche);border-color:var(--oro);outline:none}
+@media(max-width:600px){
+  .video-modal__head{padding:11px 14px;gap:10px}
+  .video-modal__close{width:36px;height:36px;font-size:1.4rem}
+}
+@media(max-height:500px){
+  .video-modal__box{width:min(94vw,940px,calc((100dvh - 76px) * 16 / 9))}
+  .video-modal__head{padding:7px 14px}
+  .video-modal__meta p{display:none}
+}
 
 /* ---------- paquetes ---------- */
 .paq-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:26px;align-items:stretch}
@@ -196,15 +208,27 @@ background:radial-gradient(1100px 600px at 50% 18%,rgba(214,163,66,.10),transpar
 
 /* ---------- videos ---------- */
 .videos{background:var(--noche)}
-.vid-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
-.vid{appearance:none;-webkit-appearance:none;width:100%;font:inherit;font-family:var(--sans);aspect-ratio:9/15;border:1px solid var(--linea);border-radius:12px;background:linear-gradient(165deg,rgba(2,66,44,.5),var(--noche));display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;text-align:center;padding:22px;transition:.35s;position:relative;overflow:hidden;cursor:pointer;color:inherit}
-.vid:hover{border-color:var(--oro);transform:translateY(-6px)}
+.vid-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+@media(max-width:820px){
+  .vid-grid{grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+}
+@media(max-width:560px){
+  .vid-grid{grid-template-columns:1fr;max-width:400px;margin:0 auto}
+}
+.vid{appearance:none;-webkit-appearance:none;width:100%;font:inherit;font-family:var(--sans);aspect-ratio:9/15;border:1px solid var(--bronce);border-radius:14px;background:var(--noche);display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:8px;text-align:center;padding:24px 22px 26px;transition:transform .38s ease,border-color .38s ease,box-shadow .38s ease;position:relative;overflow:hidden;cursor:pointer;color:inherit;box-shadow:0 20px 50px rgba(0,0,0,.4)}
+.vid::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,26,11,.22) 0%,rgba(0,26,11,.28) 42%,rgba(0,26,11,.88) 73%,rgba(0,26,11,.97) 100%);z-index:1;pointer-events:none;transition:opacity .38s ease}
+.vid-bg{position:absolute;inset:0;width:100%;height:100%;z-index:0}
+.vid-bg img{width:100%;height:100%;object-fit:cover;transition:transform .9s cubic-bezier(.2,.8,.2,1),filter .5s ease;filter:saturate(1.04)}
+.vid:hover{border-color:var(--oro);transform:translateY(-6px);box-shadow:0 28px 64px rgba(0,0,0,.55)}
+.vid:hover .vid-bg img{transform:scale(1.06);filter:brightness(1.06) saturate(1.08)}
 .vid:focus-visible{outline:2px solid var(--oro);outline-offset:3px}
-.vid-play{width:64px;height:64px;border-radius:50%;border:1.5px solid var(--oro);display:flex;align-items:center;justify-content:center;color:var(--oro);transition:.35s}
-.vid:hover .vid-play{background:var(--oro);color:var(--noche);box-shadow:0 0 30px rgba(214,163,66,.5)}
-.vid h4{font-family:var(--serif);letter-spacing:.14em;font-size:.85rem;color:#fff;text-transform:uppercase}
-.vid p{font-size:.76rem;color:var(--humo)}
-.vid .badge{position:absolute;top:14px;font-size:.58rem;letter-spacing:.3em;text-transform:uppercase;color:var(--oro);border:1px solid var(--bronce);padding:5px 12px;border-radius:20px}
+.vid-play{position:absolute;top:43%;left:50%;transform:translate(-50%,-50%);z-index:2;width:68px;height:68px;border-radius:50%;border:1.5px solid var(--oro);background:rgba(0,26,11,.74);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;color:var(--oro);box-shadow:0 10px 30px rgba(0,0,0,.5);transition:.35s}
+.vid-play svg{width:24px;height:24px;fill:currentColor;transform:translateX(2px)}
+.vid:hover .vid-play{background:var(--oro);color:var(--noche);box-shadow:0 0 34px rgba(214,163,66,.6);transform:translate(-50%,-50%) scale(1.07)}
+.vid h4,.vid p{position:relative;z-index:2}
+.vid h4{font-family:var(--serif);letter-spacing:.13em;font-size:.88rem;line-height:1.4;color:#fff;text-transform:uppercase;text-shadow:0 2px 12px rgba(0,0,0,.6)}
+.vid p{font-size:.78rem;line-height:1.55;color:var(--champ);opacity:.9}
+.vid .badge{position:absolute;top:16px;left:50%;transform:translateX(-50%);z-index:2;font-size:.58rem;letter-spacing:.3em;text-transform:uppercase;color:var(--oro);background:rgba(0,26,11,.84);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);border:1px solid rgba(214,163,66,.6);padding:6px 14px;border-radius:20px;white-space:nowrap}
 
 /* ---------- proceso ---------- */
 .pasos{max-width:860px;margin:0 auto;position:relative}
@@ -288,7 +312,7 @@ background:radial-gradient(1100px 600px at 50% 18%,rgba(214,163,66,.10),transpar
 
 /* ---------- footer / fab ---------- */
 footer{background:var(--noche);border-top:1px solid var(--linea);padding:44px 0;text-align:center}
-footer img{height:44px;margin:0 auto 16px;mix-blend-mode:screen;opacity:.9}
+footer img{height:48px;width:auto;margin:0 auto 16px;opacity:.95;filter:drop-shadow(0 4px 14px rgba(0,0,0,.45))}
 footer p{font-size:.66rem;letter-spacing:.26em;text-transform:uppercase;color:var(--humo)}
 footer .script{font-family:var(--script);color:var(--oro);font-size:1.3rem;letter-spacing:0;text-transform:none;display:block;margin-top:8px}
 .fab{position:fixed;right:26px;bottom:26px;z-index:150;width:64px;height:64px;border-radius:50%;background:var(--oro);color:var(--noche);display:flex;align-items:center;justify-content:center;box-shadow:0 12px 34px rgba(0,0,0,.5);transition:.3s;animation:pulso 2.6s infinite}
@@ -346,7 +370,7 @@ footer .script{font-family:var(--script);color:var(--oro);font-size:1.3rem;lette
 <!-- ============ NAVEGACIÓN ============ -->
 <header id="header">
   <div class="wrap nav">
-    <a href="#inicio"><img src="img/logo-horizontal.jpg" alt="Zacapa Floral" class="logo-nav"></a>
+    <a href="#inicio"><picture><source srcset="img/logo-horizontal.webp" type="image/webp"><img src="img/logo-horizontal.png" alt="Zacapa Floral" class="logo-nav" width="1320" height="400"></picture></a>
     <ul class="nav-links" id="menu">
       <li><a href="#transformacion">Transformación</a></li>
       <li><a href="#galeria">Galería</a></li>
@@ -363,7 +387,7 @@ footer .script{font-family:var(--script);color:var(--oro);font-size:1.3rem;lette
 <!-- ============ HÉROE ============ -->
 <div class="hero" id="inicio">
   <div id="petalos" aria-hidden="true"></div>
-  <img src="img/logo-principal.jpg" alt="Logo Zacapa Floral" class="hero-logo">
+  <picture><source srcset="img/logo-principal.webp" type="image/webp"><img src="img/logo-principal.png" alt="Logo Zacapa Floral" class="hero-logo" width="1200" height="1183" fetchpriority="high"></picture>
   <h1 class="hero-eslogan">No decoramos espacios;<br><em>transformamos emociones en recuerdos</em></h1>
   <p class="hero-sub">Alta floristería y diseño floral para bodas, XV años, celebraciones familiares, eventos corporativos y religiosos. Creamos ambientaciones y experiencias personalizadas que hacen de cada ocasión un momento extraordinario.</p>
   <div class="hero-ctas">
@@ -425,15 +449,17 @@ footer .script{font-family:var(--script);color:var(--oro);font-size:1.3rem;lette
 </div>
 
 <!-- ============ VIDEO MODAL (carga diferida - 0 bytes hasta clic) ============ -->
-<div class="video-modal" id="videoModal" role="dialog" aria-modal="true" aria-label="Reproductor de video" aria-hidden="true" hidden>
+<div class="video-modal" id="videoModal" role="dialog" aria-modal="true" aria-labelledby="vmTitle" aria-hidden="true" hidden>
   <div class="video-modal__box" id="vmBox" role="document">
-    <button class="video-modal__close" id="vmClose" aria-label="Cerrar video" type="button">×</button>
+    <div class="video-modal__head" id="vmInfo">
+      <div class="video-modal__meta">
+        <h4 id="vmTitle"></h4>
+        <p id="vmDesc"></p>
+      </div>
+      <button class="video-modal__close" id="vmClose" aria-label="Cerrar video" type="button">×</button>
+    </div>
     <div class="video-modal__ratio" id="vmRatio">
       <div id="videoContainer" style="position:absolute;inset:0"></div>
-    </div>
-    <div class="video-modal__info" id="vmInfo" hidden>
-      <h4 id="vmTitle"></h4>
-      <p id="vmDesc"></p>
     </div>
   </div>
 </div>
@@ -498,78 +524,48 @@ footer .script{font-family:var(--script);color:var(--oro);font-size:1.3rem;lette
   <div class="wrap">
     <p class="kicker reveal">Detrás de cámaras</p>
     <h2 class="titulo-seccion reveal">Nuestro proceso en video</h2>
-    <p class="sub-seccion reveal">Aquí podrás ver cómo nace cada decoración: la preparación, el montaje y el momento en que el espacio cobra vida. Contenido que también encuentras en nuestras redes.</p>
-    <!--
-      🎬 CÓMO AGREGAR TUS VIDEOS (0 bytes hasta hacer clic):
-      1. Sube tu video a YouTube, TikTok, Vimeo o como MP4 en tu hosting.
-      2. Copia el LINK y pégalo en el atributo data-video de cada botón.
-         Ejemplos válidos:
-           YouTube:  https://www.youtube.com/watch?v=kl1uIPekSbE  ó  https://youtu.be/kl1uIPekSbE  ó  https://www.youtube.com/shorts/XXXX
-           TikTok:   https://www.tiktok.com/@zacapafloral/video/7261234567890123456
-           Vimeo:    https://vimeo.com/123456789
-           MP4:      https://tusitio.com/videos/montaje.mp4  ó  img/videos/montaje.mp4
-      3. Cambia data-title y data-desc si quieres (aparecen en el modal).
-      4. Para videos verticales (9:16 TikTok/Reels) agrega data-orientacion="vertical".
-      5. Si aún no tienes video deja data-video="" y quedará como "Próximamente" con botón a WhatsApp.
-      ⚡️ El video NO se carga hasta que el visitante toca el botón → la página sigue liviana.
-    -->
+    <p class="sub-seccion reveal">Aquí podrás ver cómo nace cada decoración: la preparación previa, la creación de cada arreglo y el espacio integrado en total armonía. Toca cualquier video para reproducirlo aquí mismo.</p>
     <div class="vid-grid reveal">
       <button class="vid" type="button"
-        data-video="https://www.youtube.com/watch?v=kl1uIPekSbE"
-        data-title="El montaje, paso a paso"
-        data-desc="Del salón vacío al evento terminado, en tiempo real."
-        aria-label="Ver video: El montaje, paso a paso">
-        <span class="badge">Ver video · YouTube</span>
-        <span class="vid-play" aria-hidden="true">▶</span>
-        <h4>El montaje, paso a paso</h4>
-        <p>Del salón vacío al evento terminado, en tiempo real.</p>
+        data-video="https://raw.githubusercontent.com/zacapafloral/zacapa-floral-web/refs/heads/main/Videos/Video%201.mp4"
+        data-fallback="Videos/Video%201.mp4"
+        data-poster="img/video-1-poster.webp"
+        data-title="El arte de la preparación"
+        data-desc="Selección de flores, follajes y telas que preparan el escenario antes del montaje."
+        aria-label="Ver video: El arte de la preparación">
+        <picture class="vid-bg"><source srcset="img/video-1-thumb.webp" type="image/webp"><img src="img/video-1-thumb.jpg" alt="Preparación previa de flores y follajes en Zacapa Floral" loading="lazy" width="540" height="900"></picture>
+        <span class="badge">Ver video</span>
+        <span class="vid-play" aria-hidden="true"><svg viewBox="0 0 24 24"><polygon points="8,5 20,12 8,19"/></svg></span>
+        <h4>El arte de la preparación</h4>
+        <p>Selección de flores, follajes y telas que preparan el escenario antes del montaje.</p>
       </button>
       <button class="vid" type="button"
-        data-video="https://www.youtube.com/watch?v=oSfVgn7oC_I"
+        data-video="https://raw.githubusercontent.com/zacapafloral/zacapa-floral-web/refs/heads/main/Videos/video%202.mp4"
+        data-fallback="Videos/video%202.mp4"
+        data-poster="img/video-2-poster.webp"
         data-title="Así nace un arreglo floral"
-        data-desc="De la flor cruda al detalle final, pétalo por pétalo."
+        data-desc="De la base firme al último detalle, dando altura, equilibrio y vida flor por flor."
         aria-label="Ver video: Así nace un arreglo floral">
-        <span class="badge">Ver video · YouTube</span>
-        <span class="vid-play" aria-hidden="true">▶</span>
+        <picture class="vid-bg"><source srcset="img/video-2-thumb.webp" type="image/webp"><img src="img/video-2-thumb.jpg" alt="Creación paso a paso de un arreglo floral en Zacapa Floral" loading="lazy" width="540" height="900"></picture>
+        <span class="badge">Ver video</span>
+        <span class="vid-play" aria-hidden="true"><svg viewBox="0 0 24 24"><polygon points="8,5 20,12 8,19"/></svg></span>
         <h4>Así nace un arreglo floral</h4>
-        <p>De la flor cruda al detalle final, pétalo por pétalo.</p>
+        <p>De la base firme al último detalle, dando altura, equilibrio y vida flor por flor.</p>
       </button>
       <button class="vid" type="button"
-        data-video="https://www.youtube.com/watch?v=ZRUK-Saoj_I"
-        data-title="La reacción del cliente"
-        data-desc="El momento exacto en que el espacio se convierte en emoción."
-        aria-label="Ver video: La reacción del cliente">
-        <span class="badge">Ver video · YouTube</span>
-        <span class="vid-play" aria-hidden="true">▶</span>
-        <h4>La reacción del cliente</h4>
-        <p>El momento exacto en que el espacio se convierte en emoción.</p>
+        data-video="https://raw.githubusercontent.com/zacapafloral/zacapa-floral-web/refs/heads/main/Videos/Video%203.mp4"
+        data-fallback="Videos/Video%203.mp4"
+        data-poster="img/video-3-poster.webp"
+        data-title="Así luce un espacio integrado"
+        data-desc="Cada arreglo, color y textura unidos por Zacapa Floral para crear recuerdos."
+        aria-label="Ver video: Así luce un espacio integrado">
+        <picture class="vid-bg"><source srcset="img/video-3-thumb.webp" type="image/webp"><img src="img/video-3-thumb.jpg" alt="Espacio transformado e integrado por Zacapa Floral" loading="lazy" width="540" height="900"></picture>
+        <span class="badge">Ver video</span>
+        <span class="vid-play" aria-hidden="true"><svg viewBox="0 0 24 24"><polygon points="8,5 20,12 8,19"/></svg></span>
+        <h4>Así luce un espacio integrado</h4>
+        <p>Cada arreglo, color y textura unidos por Zacapa Floral para crear recuerdos.</p>
       </button>
     </div>
-    <!-- Ejemplo de video vertical TikTok (descomenta y pon tu link real):
-    <button class="vid" type="button"
-      data-video="https://www.tiktok.com/@zacapafloral/video/7261234567890123456"
-      data-orientacion="vertical"
-      data-title="Montaje vertical TikTok"
-      data-desc="Ejemplo vertical 9:16"
-      aria-label="Ver video vertical">
-      <span class="badge">Ver video · TikTok</span>
-      <span class="vid-play">▶</span>
-      <h4>Video TikTok vertical</h4>
-      <p>Toca para reproducir (9:16).</p>
-    </button>
-    -->
-    <!-- Ejemplo MP4 propio:
-    <button class="vid" type="button"
-      data-video="img/videos/demo.mp4"
-      data-title="Demo MP4"
-      data-desc="Video alojado en tu propio hosting"
-      aria-label="Ver video MP4">
-      <span class="badge">Ver video · MP4</span>
-      <span class="vid-play">▶</span>
-      <h4>Video MP4</h4>
-      <p>Se reproduce sin salir de la web.</p>
-    </button>
-    -->
   </div>
 </section>
 
@@ -769,7 +765,7 @@ footer .script{font-family:var(--script);color:var(--oro);font-size:1.3rem;lette
 
 <!-- ============ FOOTER ============ -->
 <footer>
-  <img src="img/logo-horizontal.jpg" alt="Zacapa Floral">
+  <picture><source srcset="img/logo-horizontal.webp" type="image/webp"><img src="img/logo-horizontal.png" alt="Zacapa Floral" width="1320" height="400" loading="lazy"></picture>
   <p>Zacapa Floral · Nahuizalco, Sonsonate, El Salvador · © 2026
   <span class="script">No decoramos espacios; transformamos emociones en recuerdos</span></p>
 </footer>
@@ -942,168 +938,128 @@ document.getElementById('lbCerrar').addEventListener('click',cerrarLb);
 lb.addEventListener('click',e=>e.target===lb&&cerrarLb());
 addEventListener('keydown',e=>e.key==='Escape'&&cerrarLb());
 
-/* ===== video lightbox — carga diferida (0 bytes hasta clic) ===== */
+/* ===== video lightbox — HTML5 nativo con carga diferida (0 bytes hasta clic) ===== */
 (function(){
   const vm=document.getElementById('videoModal');
   const vmClose=document.getElementById('vmClose');
   const vmRatio=document.getElementById('vmRatio');
   const vmBox=document.getElementById('vmBox');
   const container=document.getElementById('videoContainer');
-  const vmInfo=document.getElementById('vmInfo');
   const vmTitle=document.getElementById('vmTitle');
   const vmDesc=document.getElementById('vmDesc');
   if(!vm||!container) return;
 
-  function parseVideo(raw){
-    const url=(raw||'').trim();
-    if(!url || url==='#') return null;
-    // MP4 / WEBM directo
-    if(/\.(mp4|webm|ogg|mov)(\?.*)?$/i.test(url)){
-      return {type:'mp4', src:url, vertical: false};
-    }
-    // YouTube
-    let m=url.match(/(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/|live\/)|youtu\.be\/)([A-Za-z0-9_-]{11})/);
-    if(m){
-      const id=m[1];
-      return {type:'youtube', src:'https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&rel=0&modestbranding=1&playsinline=1&enablejsapi=1', id:id, vertical:false};
-    }
-    if(url.includes('youtube.com')||url.includes('youtu.be')){
-      // fallback si no capturó id pero es youtube
-      try{ const u=new URL(url); const v=u.searchParams.get('v'); if(v) return {type:'youtube', src:'https://www.youtube-nocookie.com/embed/'+v+'?autoplay=1&rel=0&modestbranding=1&playsinline=1', id:v}; }catch(e){}
-    }
-    // TikTok
-    m=url.match(/tiktok\.com\/.*\/video\/(\d+)/);
-    if(m){
-      const id=m[1];
-      return {type:'tiktok', src:'https://www.tiktok.com/embed/'+id, id:id, vertical:true};
-    }
-    if(url.includes('tiktok.com')){
-      // intentar embed directo si ya es embed
-      if(url.includes('/embed/')) return {type:'tiktok', src:url, vertical:true};
-    }
-    // Vimeo
-    m=url.match(/vimeo\.com\/(?:video\/)?(\d+)/);
-    if(m){
-      const id=m[1];
-      return {type:'vimeo', src:'https://player.vimeo.com/video/'+id+'?autoplay=1&title=0&byline=0&portrait=0', id:id, vertical:false};
-    }
-    // Instagram
-    m=url.match(/instagram\.com\/(?:p|reel|tv)\/([A-Za-z0-9_-]+)/);
-    if(m){
-      const id=m[1];
-      const kind=url.includes('/reel/')?'reel': url.includes('/tv/')?'tv':'p';
-      return {type:'instagram', src:'https://www.instagram.com/'+kind+'/'+id+'/embed', id:id, vertical:true};
-    }
-    // Facebook video
-    if(url.includes('facebook.com') && url.includes('/videos/')){
-      return {type:'iframe', src:url, vertical:false};
-    }
-    // Por defecto iframe genérico
-    return {type:'iframe', src:url, vertical:false};
+  let ultimoBoton=null;
+  let cierreTimer=null;
+
+  function inferMime(src){
+    const s=(src||'').toLowerCase().split('?')[0];
+    if(s.endsWith('.webm')) return 'video/webm';
+    if(s.endsWith('.ogg')||s.endsWith('.ogv')) return 'video/ogg';
+    return 'video/mp4';
   }
 
-  function crearElementoVideo(parsed, rawUrl){
-    if(!parsed) return null;
-    if(parsed.type==='mp4'){
-      const v=document.createElement('video');
-      v.controls=true; v.autoplay=true; v.playsInline=true; v.preload='metadata';
-      v.style.cssText='width:100%;height:100%;object-fit:contain;background:#000';
-      v.setAttribute('controlsList','nodownload');
-      const s=document.createElement('source');
-      s.src=parsed.src;
-      // inferir tipo
-      if(parsed.src.toLowerCase().endsWith('.webm')) s.type='video/webm';
-      else if(parsed.src.toLowerCase().endsWith('.ogg')) s.type='video/ogg';
-      else s.type='video/mp4';
-      v.appendChild(s);
-      v.innerHTML+='Tu navegador no soporta video HTML5.';
-      return v;
-    } else {
-      const f=document.createElement('iframe');
-      f.src=parsed.src;
-      f.allow='autoplay; fullscreen; encrypted-media; picture-in-picture; clipboard-write';
-      f.allowFullscreen=true;
-      f.loading='eager';
-      f.referrerPolicy='strict-origin-when-cross-origin';
-      f.title='Video Zacapa Floral';
-      // autoplay necesita allow autoplay
-      if(parsed.type==='youtube') f.allow+='; accelerometer; gyroscope';
-      return f;
+  function crearReproductorNativo(rawUrl, fallbackUrl, posterUrl){
+    const v=document.createElement('video');
+    v.controls=true;
+    v.setAttribute('controls','');
+    v.setAttribute('controlsList','nodownload');
+    v.playsInline=true;
+    v.setAttribute('playsinline','');
+    v.preload='metadata';
+    if(posterUrl) v.poster=posterUrl;
+
+    const sPrincipal=document.createElement('source');
+    sPrincipal.src=rawUrl;
+    sPrincipal.type=inferMime(rawUrl);
+    v.appendChild(sPrincipal);
+
+    if(fallbackUrl && fallbackUrl!==rawUrl){
+      const sRespaldo=document.createElement('source');
+      sRespaldo.src=fallbackUrl;
+      sRespaldo.type=inferMime(fallbackUrl);
+      v.appendChild(sRespaldo);
     }
+
+    v.appendChild(document.createTextNode('Tu navegador no soporta la reproducción de video HTML5.'));
+    return v;
   }
 
-  function abrirVideo(url, titulo, desc, orientacion){
-    const parsed=parseVideo(url);
-    const esVertical=(orientacion==='vertical'||orientacion==='9:16'|| (parsed && parsed.vertical));
-    // Configurar ratio
-    vmRatio.classList.toggle('vertical', !!esVertical);
-    // Título / desc
-    if(titulo || desc){
-      vmTitle.textContent=titulo||'';
-      vmDesc.textContent=desc||'';
-      vmInfo.hidden=false;
-      vmInfo.style.display='';
-    } else {
-      vmInfo.hidden=true;
+  function detenerVideoActual(){
+    const actual=container.querySelector('video');
+    if(actual){
+      try{ actual.pause(); }catch(e){}
+      actual.querySelectorAll('source').forEach(s=>s.removeAttribute('src'));
+      actual.removeAttribute('src');
+      try{ actual.load(); }catch(e){}
     }
-    // Limpiar y crear contenido
     container.innerHTML='';
-    if(!parsed){
-      // Próximamente — sin video aún
-      container.innerHTML='<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;padding:32px 24px;text-align:center;color:var(--champ);background:radial-gradient(600px 400px at 50% 20%,rgba(214,163,66,.12),transparent 60%),linear-gradient(180deg,#001A0B,#003020)"><div style="width:64px;height:64px;border-radius:50%;border:1.5px solid var(--oro);display:flex;align-items:center;justify-content:center;color:var(--oro);font-size:1.4rem;margin-bottom:16px">✦</div><h4 style="font-family:var(--serif);letter-spacing:.14em;color:#fff;font-size:1rem;margin:0 0 8px;text-transform:uppercase">'+(titulo||'Video próximamente')+'</h4><p style="color:var(--humo);font-size:.9rem;max-width:420px;margin:0 0 22px;line-height:1.6">'+(desc||'Estamos preparando este video para ti. Escríbenos por WhatsApp y te lo enviamos en cuanto esté listo.')+'</p><a class="btn-oro" href="https://wa.me/50362922118?text=Hola%20Zacapa%20Floral%2C%20quiero%20ver%20sus%20videos." target="_blank" rel="noopener">Pedir video por WhatsApp</a></div>';
-      // Para placeholder, mantener ratio 16:9 normal (no vertical) y altura fija
-      vmRatio.classList.remove('vertical');
-    } else {
-      const el=crearElementoVideo(parsed, url);
-      if(el) container.appendChild(el);
+  }
+
+  function abrirVideo(opts){
+    const url=(opts.url||'').trim();
+    const fallback=(opts.fallback||'').trim();
+    const poster=(opts.poster||'').trim();
+    const titulo=opts.titulo||'';
+    const desc=opts.desc||'';
+    const esVertical=(opts.orientacion==='vertical'||opts.orientacion==='9:16');
+
+    if(cierreTimer){ clearTimeout(cierreTimer); cierreTimer=null; }
+    detenerVideoActual();
+
+    vmRatio.classList.toggle('vertical', esVertical);
+    vmBox.classList.toggle('vertical', esVertical);
+    vmTitle.textContent=titulo||'Detrás de cámaras · Zacapa Floral';
+    vmDesc.textContent=desc||'';
+    vmDesc.hidden=!desc;
+
+    if(url){
+      const videoEl=crearReproductorNativo(url, fallback, poster);
+      container.appendChild(videoEl);
+      const promesa=videoEl.play();
+      if(promesa && typeof promesa.catch==='function') promesa.catch(function(){});
     }
+
     vm.hidden=false;
     vm.removeAttribute('hidden');
     vm.setAttribute('aria-hidden','false');
     vm.classList.add('abierto');
     document.body.style.overflow='hidden';
-    // foco en close para accesibilidad
     setTimeout(()=>vmClose.focus({preventScroll:true}), 30);
   }
 
   function cerrarVideo(){
+    detenerVideoActual();
     vm.classList.remove('abierto');
     vm.setAttribute('aria-hidden','true');
-    // Esperar transición para ocultar y limpiar video (detener reproducción)
-    setTimeout(()=>{
-      if(!vm.classList.contains('abierto')){
-        container.innerHTML='';
-        vm.hidden=true;
-        vm.setAttribute('hidden','');
-        if(!lb.classList.contains('abierto')) document.body.style.overflow='';
-      }
-    }, 180);
-    vmInfo.hidden=true;
+    vm.hidden=true;
+    vm.setAttribute('hidden','');
+    if(!lb.classList.contains('abierto')) document.body.style.overflow='';
+    if(ultimoBoton && typeof ultimoBoton.focus==='function'){
+      try{ ultimoBoton.focus({preventScroll:true}); }catch(e){}
+    }
   }
 
-  // Exponer global por si quiere abrir desde consola o links
-  window.abrirVideoZacapa=abrirVideo;
+  window.abrirVideoZacapa=function(url, titulo, desc, orientacion, fallback, poster){
+    abrirVideo({url:url, titulo:titulo, desc:desc, orientacion:orientacion, fallback:fallback, poster:poster});
+  };
   window.cerrarVideoZacapa=cerrarVideo;
 
-  // Delegación para todos los botones .vid
   document.querySelectorAll('.vid').forEach(btn=>{
-    // Solo botones con data-video son videos; si no tiene, lo tratamos como próximamente
     btn.addEventListener('click', (e)=>{
       e.preventDefault();
-      const url=btn.getAttribute('data-video')||'';
-      const titulo=btn.getAttribute('data-title')|| btn.querySelector('h4')?.textContent?.trim()||'';
-      const desc=btn.getAttribute('data-desc')|| btn.querySelector('p')?.textContent?.trim()||'';
-      const orient=btn.getAttribute('data-orientacion')|| btn.getAttribute('data-orientation')||'';
-      // Si no hay video y tampoco es un botón de video (legacy <a>), permitir navegación normal
-      if(!url && btn.tagName==='A' && btn.href){
-        window.open(btn.href,'_blank','noopener');
-        return;
-      }
-      abrirVideo(url, titulo, desc, orient);
+      ultimoBoton=btn;
+      abrirVideo({
+        url: btn.getAttribute('data-video')||'',
+        fallback: btn.getAttribute('data-fallback')||'',
+        poster: btn.getAttribute('data-poster')||'',
+        titulo: btn.getAttribute('data-title')||btn.querySelector('h4')?.textContent?.trim()||'',
+        desc: btn.getAttribute('data-desc')||btn.querySelector('p')?.textContent?.trim()||'',
+        orientacion: btn.getAttribute('data-orientacion')||btn.getAttribute('data-orientation')||''
+      });
     });
   });
 
-  // Cerrar por botón X, clic fuera y ESC
   vmClose.addEventListener('click', cerrarVideo);
   vm.addEventListener('click', (e)=>{ if(e.target===vm) cerrarVideo(); });
   addEventListener('keydown', (e)=>{
@@ -1112,7 +1068,6 @@ addEventListener('keydown',e=>e.key==='Escape'&&cerrarLb());
       cerrarVideo();
     }
   });
-  // Cerrar si cambia hash o navegación
   addEventListener('hashchange', ()=>{ if(vm.classList.contains('abierto')) cerrarVideo(); });
 })();
 
