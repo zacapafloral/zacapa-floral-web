@@ -150,6 +150,9 @@ background:radial-gradient(1100px 600px at 50% 18%,rgba(214,163,66,.10),transpar
 .grid-fotos{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px}
 .foto{position:relative;overflow:hidden;border-radius:8px;border:1px solid var(--linea);cursor:zoom-in;aspect-ratio:4/5;background:var(--noche)}
 .foto.h{width:100%}
+/* fotos horizontales (ambientaciones): se muestran completas y ocupan 2 columnas */
+.foto.ancha{aspect-ratio:4/3}
+@media(min-width:700px){.foto.ancha{grid-column:span 2}}
 .foto img{width:100%;height:100%;object-fit:cover;transition:transform 1s cubic-bezier(.2,.8,.2,1),filter .5s}
 .foto:hover img{transform:scale(1.07);filter:brightness(1.05)}
 .foto figcaption{position:absolute;left:0;right:0;bottom:0;padding:38px 18px 14px;background:linear-gradient(transparent,rgba(0,26,11,.9));font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--champ);opacity:0;transform:translateY(12px);transition:.45s}
@@ -813,14 +816,26 @@ ba.addEventListener('pointermove',e=>arrastrando&&moverBa(e));
 addEventListener('pointerup',()=>arrastrando=false);
 
 /* ===== galería por categorías (dinámica) ===== */
+/* El orden de este arreglo es el orden de las pestañas de la galería */
 const ORDEN_CATS=[
-  ["premium","Premium"],["jardineras","Jardineras"],["arcos","Arcos decorativos"],
+  ["premium","Premium"],["bouquets","Bouquets"],["ambientaciones","Ambientaciones"],
+  ["jardineras","Jardineras"],["arcos","Arcos decorativos"],
   ["frutales","Frutales"],["invitaciones","Invitaciones"],["religiosos","Religiosos"],
   ["centros","Centros de mesa"],["mesa-honor","Mesa de honor"],["ramos","Ramos"],
   ["pesames","Pésames"],["arreglos","Arreglos florales"],["obsequios","Obsequios"],["otros","Otros"]
 ];
-/* [archivo (sin extensión), categoría] — agregar aquí las nuevas fotos */
-/* [archivo (sin extensión), categoría] — las 50 fotos reales de Zacapa Floral */
+/* Fotografías que van en formato horizontal y ocupan 2 columnas en pantallas grandes */
+const FOTOS_ANCHAS=new Set(["ambientaciones/ambientaciones-1","ambientaciones/ambientaciones-2"]);
+/* Texto alternativo propio (SEO + accesibilidad). Si no está aquí, se usa el genérico */
+const ALT_FOTOS={
+  "bouquets/bouquets-1":"Bouquet de novia con rosas blancas y rosadas, eucalipto, gypsophila y perlas — Zacapa Floral",
+  "ambientaciones/ambientaciones-1":"Ambientación de altar con cortinas amarillas y arreglos florales blancos y amarillos — Zacapa Floral",
+  "ambientaciones/ambientaciones-2":"Ambientación para procesión religiosa con cortinas blancas, girasoles y arreglos florales — Zacapa Floral"
+};
+/* [archivo (sin extensión), categoría] — agregar aquí las nuevas fotos.
+   El archivo puede estar en img/ o en una subcarpeta: ["bouquets/bouquets-1","bouquets"].
+   Cada foto necesita su .jpg y su .webp con el mismo nombre. */
+/* [archivo (sin extensión), categoría] — las 53 fotos reales de Zacapa Floral */
 const FOTOS=[
   /* --- Premium (11) --- */
   ["premium-cascada-2","premium"],
@@ -834,6 +849,11 @@ const FOTOS=[
   ["premium-6","premium"],
   ["premium-7","premium"],
   ["premium-colgante-8","premium"],
+  /* --- Bouquets (1) --- */
+  ["bouquets/bouquets-1","bouquets"],
+  /* --- Ambientaciones (2) --- */
+  ["ambientaciones/ambientaciones-1","ambientaciones"],
+  ["ambientaciones/ambientaciones-2","ambientaciones"],
   /* --- Jardineras (6) --- */
   ["jardinera-1","jardineras"],
   ["jardinera-2","jardineras"],
@@ -894,7 +914,9 @@ function pintarGaleria(cat){
   grid.innerHTML='';
   rondaFotos(cat).forEach(([base])=>{
     const f=document.createElement('figure');f.className='foto';
-    f.innerHTML=`<picture><source srcset="img/${base}.webp" type="image/webp"><img src="img/${base}.jpg" alt="Trabajo floral de Zacapa Floral" loading="lazy"></picture>`;
+    if(FOTOS_ANCHAS.has(base))f.classList.add('ancha');
+    const alt=ALT_FOTOS[base]||"Trabajo floral de Zacapa Floral";
+    f.innerHTML=`<picture><source srcset="img/${base}.webp" type="image/webp"><img src="img/${base}.jpg" alt="${alt}" loading="lazy"></picture>`;
     f.addEventListener('click',()=>abrirLb(f.querySelector('img')));
     grid.appendChild(f);
   });
