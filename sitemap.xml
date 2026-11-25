@@ -6,7 +6,7 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://www.zacapafloral.com/</loc>
-    <lastmod>2026-10-23</lastmod>
+    <lastmod>2026-11-25</lastmod>
     <image:image>
       <image:loc>https://www.zacapafloral.com/img/antes.jpg</image:loc>
       <image:title>Espacio antes de la decoración de Zacapa Floral</image:title>
@@ -62,6 +62,18 @@
     <image:image>
       <image:loc>https://www.zacapafloral.com/img/premium-colgante-8.jpg</image:loc>
       <image:title>Decoración floral premium para eventos — Zacapa Floral</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.zacapafloral.com/img/bouquets/bouquets-1.jpg</image:loc>
+      <image:title>Bouquet de novia con rosas blancas y rosadas — Zacapa Floral</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.zacapafloral.com/img/ambientaciones/ambientaciones-1.jpg</image:loc>
+      <image:title>Ambientación de altar con cortinas y arreglos florales — Zacapa Floral</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.zacapafloral.com/img/ambientaciones/ambientaciones-2.jpg</image:loc>
+      <image:title>Ambientación floral para procesión religiosa — Zacapa Floral</image:title>
     </image:image>
     <image:image>
       <image:loc>https://www.zacapafloral.com/img/jardinera-1.jpg</image:loc>

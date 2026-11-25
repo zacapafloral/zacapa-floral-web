@@ -14,7 +14,9 @@ Contacto: zacapafloral@gmail.com · TikTok/Facebook/Instagram: @zacapafloral
 - Optimizado para celular, tablet y computadora (mobile-first, breakpoints 768px/1100px)
 - Imágenes WebP con respaldo JPG (`<picture>`) — 43% más livianas
 - Slider interactivo "Antes / Después"
-- Galería doble (arreglos florales / espacios transformados) con lightbox
+- Galería por categorías (15 categorías: **Premium**, **Bouquets**, **Ambientaciones**, jardineras,
+  arcos, frutales, invitaciones, religiosos, centros de mesa, mesa de honor, ramos, pésames,
+  arreglos, obsequios y otros) con lightbox y fotos horizontales a doble columna
 - Configurador "Diseña tu evento" que genera el mensaje de cotización para WhatsApp
 - Sección de videos del proceso (placeholders listos para reemplazar)
 - SEO local (meta tags, Open Graph, LocalBusiness JSON-LD) y `vercel.json` con caché de imágenes
@@ -28,7 +30,14 @@ zacapa-floral-web/
 ├── robots.txt      → permite el rastreo e indica dónde está el sitemap
 ├── vercel.json     → caché de imágenes y URLs limpias
 └── img/            → logos, fotos de trabajos, salón antes/después, favicons
+    ├── bouquets/        → categoría "Bouquets" (bouquets-1.jpg + .webp)
+    └── ambientaciones/  → categoría "Ambientaciones" (ambientaciones-1/2 .jpg + .webp)
 ```
+
+> Las fotos de una categoría pueden vivir en `img/` o dentro de una subcarpeta.
+> Cada foto necesita **dos** archivos con el mismo nombre: `.jpg` y `.webp`.
+> El orden de las pestañas de la galería es el de la constante `ORDEN_CATS` de
+> `index.html` (hoy: Premium → Bouquets → Ambientaciones → Jardineras → … → Otros).
 
 ## 🔎 Google Search Console (sitemap)
 
